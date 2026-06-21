@@ -18,10 +18,17 @@
 </head>
 
 <body>
+
     <div id = "showImage"></div>
     <div id = "showID"></div>
     <div id = "showName"></div>
     <div id = "showCount"></div>
+    <p id="usuarioFecha"></p>
+    <script>
+        const date = new Date();
+        let fecha = `${date.getDate()} / ${date.getMonth()+1} / ${date.getFullYear()}`  
+        document.getElementById("usuarioFecha").innerHTML = "Se unio el " + fecha;
+    </script>
 
     <div class = "container-fluid">
         <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3" id="allShows"></div>
