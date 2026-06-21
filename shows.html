@@ -19,25 +19,25 @@
                         <td ></td>
                         <td width="17%">
                             <div  style="justify-content: right;">
-                                <button style="background-color: white; color: black; width: 35%;">Inscribirse</button>
-                                <button style="background-color: white; color: black; width: 35%; ">Ingresar</button>
+                                <button type="button" style="background-color: white; color: black; width: 35%;">Inscribirse</button>
+                                <button type="button" style="background-color: white; color: black; width: 35%; ">Ingresar</button>
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
             <div id="inferior" style="justify-content: left; padding-left: 1%; padding-bottom: 0.5%;">
-                <a href="#" style="color: white;">Inicio</a>|<a href="#" style="color: white;" >Acerca de</a>
+                <a href="index.html" style="color: white;">Inicio</a>|<a href="#" style="color: white;" >Acerca de</a>
             </div>
         </div>
         <div id="Cuerpo" width="90%" style="padding-left: 0.5%; padding-right: 0.5%;">
             <!--Pelicula actual, img, texto-->
             <table style="padding-top: 1%;">
                 <tr >
-                    <td rowspan="2" width="23%" style="padding-right: 1%;">
-                        <div class="img" style="justify-content: left; padding-top: 1%;"><img src="media/placeHolder.jpg" class="caratula" alt="Solo un cuadro negro"  width="100%" height="300px"></div>
+                    <td rowspan="2" width="30%" style="padding-right: 1%;">
+                        <div class="img" style="justify-content: left; padding-top: 1%;"><img src="media/placeHolder.jpg" class="caratula" alt="Solo un cuadro negro"  width="100%"></div>
                     </td>
-                    <td width="77%" ><div class="titulo" style="text-align: left;"><h1>Titulo de Pelicula</h1></div></td>
+                    <td width="70%" ><div class="titulo" style="text-align: left;"><h1>Titulo de Pelicula</h1></div></td>
                 </tr>
                 <tr><td><div class="texto"><p>Descripción general de la pelicula, género, sipnosis, reparto, etc</p></div></td></tr>
             </table>
@@ -46,13 +46,12 @@
                 <table>
                     <tr><td><h3>Episodios</h3></td></tr>
                     <tr style="justify-content: right;">
-                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="70%" height="100px"></td>
-                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="70%" height="100px"></td>
-                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="70%" height="100px"></td>
-                        <td style=" align-items: center;" ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="70%" height="100px"></td>
-                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="70%" height="100px"></td>
-                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="70%" height="100px"></td>
-                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="70%" height="100px"></td>
+                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="50%"></td>
+                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="50%"></td>
+                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="50%"></td>
+                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="50%"></td>
+                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="50%"></td>
+                        <td style=" align-items: center; " ><img src="media/placeHolder.jpg" alt="Solo un cuadro negro" width="50%"></td>
                     </tr>
                 </table>
             </div>
@@ -68,11 +67,12 @@
                         <td style="border: 2px solid black;">
                             <form action="#" target="_blank">
                                 <div style="padding-bottom: 1%; padding-left: 0.5%;" >
+                                    <input type="text" id="nom" name="nombre" style="width: 50%;">
                                     <label for="nom">Nombre de usuario</label>
-                                    <input type="text" id="nom" name="nombre"><br>
                                 </div>
                                 <div style="justify-content: center; padding-left: 0.5%;" height="500px">
-                                    <textarea style="width: 90%;" name="comentario"></textarea>
+                                    <label for="comentario"></label>
+                                    <textarea style="width: 90%; height: 100px;" name="comentario"></textarea>
                                 </div>
                                 
                             </form>
@@ -80,6 +80,28 @@
                     </tr>
                 </table>
             </div>
+            
+        </div>
+        <div id="footer" style="height: 120px; width: 100%; background-color: black; color: white; margin-top: 1%; ">
+            <table>
+                <tr style="height: 10%;">
+                    <td style="width: 60%;">
+                        <ul style="list-style: none;"><li><h3>Contacto</h3></li></ul>
+                    </td>
+                    <td>
+                        <ul style="list-style: none;"><li><h3>Sobre Nosotros</h3></li></ul>
+                    </td>
+                </tr>
+                <tr style="margin-top: 0%;">
+                    <td style="width: 60%;">
+                        <ul style="list-style: none;">
+                            <li>Matías</li>
+                            <li>Nube</li>
+                        </ul>
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
         </div>
     </div>
 </body>
