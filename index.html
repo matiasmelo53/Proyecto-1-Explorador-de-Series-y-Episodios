@@ -9,18 +9,32 @@
     <div width="100%">
         <div id="Barra de Navegación" style="background-color: black; color: white;"><!--Barra navegación superior, con tablas y pre-css-->
             <div id="superior">
-                <table>
+                <table style="padding: 10px;">
                     <tr>
-                        <td width="83%"> 
+                        <td width="20%"> 
                             <div >
-                                <img src="media/logoPlaceholder.png" alt="Logo FilmLogs" width="175px">
+                                <a href="index.html">
+                                    <img src="media/logoPlaceholder.png" alt="Logo FilmLogs" width="175px">
+                                </a>
                             </div>
                         </td>
-                        <td ></td>
-                        <td width="17%">
+
+                        <td width="67%">
+                            <div style="justify-content:space-evenly;">
+                                <form>
+                                    <button type="submit" style="background-color: white; color: black; border-color: black; box-shadow: 5px 5px #FFFE00; height: 39px;">Buscar</button>
+                                    <input type="text" id="busqueda" name="busqueda" placeholder="Busqueda" style="margin-left:20px; height: 25px; padding: 5px; padding-left: 15px; width: 80%; border-color: black; box-shadow: 5px 5px #FFFE00;">
+                                </form>
+                            </div>
+                        </td>
+                        
+                        <td width="20%">
                             <div  style="justify-content: right;">
-                                <button type="button" style="background-color: white; color: black; width: 35%;">Inscribirse</button>
-                                <button type="button" style="background-color: white; color: black; width: 35%; ">Ingresar</button>
+                                <button type="button" style="background-color: black; color: white; border-color: white; box-shadow: 5px 5px #FFFE00; height: 39px;">Inscribirse</button>
+                                <button type="button" style="margin-left:20px; background-color: black; color: white; border-color: white; box-shadow: 5px 5px #FFFE00; height: 39px;">Ingresar</button>
+                                <a href="perfil.html">
+                                    <img src="media/usuarioPlaceholder.png" style="margin-left:20px; height: 39px; border-style: solid; border-color: black; box-shadow: 5px 5px #FFFE00;">
+                                </a>
                             </div>
                         </td>
                     </tr>
