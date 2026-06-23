@@ -3,35 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingreso</title>
+    <title>Inscribirse</title>
 </head>
-<body style="font-family:Georgia, 'Times New Roman', Times, serif">
+<body style="font-family:Georgia, 'Times New Roman', Times, serif; background-color: #00B0D3;">
     <div style="width: 100%;">
         <div id="Barra de Navegación" style="background-color: black; color: white;"><!--Barra navegación superior, con tablas y pre-css-->
             <div id="superior">
-                <table>
+                <table style="padding: 10px;">
                     <tr>
-                        <td width="83%"> 
+                        <td width="20%"> 
                             <div >
-                                <a href="index.html"><img src="media/Logo[El Mejor].jpg" alt="Logo Neflis2" width="125px"></a>
+                                <a href="index.html">
+                                    <img src="media/logoPlaceholder.png" alt="Logo FilmLogs" width="175px">
+                                </a>
                             </div>
                         </td>
-                        <td ></td>
-                        <td width="17%">
+
+                        <td width="67%">
+                            <div style="justify-content:space-evenly;">
+                                <form>
+                                    <button type="submit" style="background-color: white; color: black; border-color: black; box-shadow: 5px 5px #FFFE00; height: 39px;">Buscar</button>
+                                    <input type="text" id="busqueda" name="busqueda" placeholder="Busqueda" style="margin-left:20px; height: 25px; padding: 5px; padding-left: 15px; width: 80%; border-color: black; box-shadow: 5px 5px #FFFE00;">
+                                </form>
+                            </div>
+                        </td>
+                        
+                        <td width="20%">
                             <div  style="justify-content: right;">
-                                <button type="button" style="background-color: white; color: black; width: 35%;"><a href="signin.html">Inscribirse</a></button>
-                                <button type="button" style="background-color: white; color: black; width: 35%; "><a href="login.html">Ingresar</a></button>
+                                <button type="button" style="background-color: black; color: white; border-color: white; box-shadow: 5px 5px #FFFE00; height: 39px;">Inscribirse</button>
+                                <button type="button" style="margin-left:20px; background-color: black; color: white; border-color: white; box-shadow: 5px 5px #FFFE00; height: 39px;">Ingresar</button>
+                                <a href="perfil.html">
+                                    <img src="media/usuarioPlaceholder.png" style="margin-left:20px; height: 39px; border-style: solid; border-color: black; box-shadow: 5px 5px #FFFE00;">
+                                </a>
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
             <div id="inferior" style="justify-content: left; padding-left: 1%; padding-bottom: 0.5%;">
-                <a href="index.html" style="color: white;">Inicio</a>|<a href="#" style="color: white;" >Acerca de</a>
+                <a href="index.html" style="color: white;">Inicio</a>|<a href="acercade.html" style="color: white;" >Acerca de</a>
             </div>
         </div>
         <div class="form" style="margin-top: 5%; margin-bottom: 5%;">
-            <table style="margin-top: 2%; margin-left: 15%; padding: 1%; width: 70%; border: 1px solid black;" >
+            <table style="margin-top: 2%; margin-left: 15%; padding: 1%; width: 70%; border: 1px solid black;background-color: #FFFE00;" >
                 <form >
                     <tr>
                         <td align="left" style="margin-left: 20%; padding-bottom: 1%;" >
@@ -39,7 +53,7 @@
                             
                         </td>
                         <td style="padding-bottom: 1%;">
-                            <input type="text" name="nombre" placeholder="Cato212" size="70%">
+                            <input type="text" name="nombre" placeholder="No uses tu nombre real." size="70%">
                         </td>
                     </tr>
                     <tr>
