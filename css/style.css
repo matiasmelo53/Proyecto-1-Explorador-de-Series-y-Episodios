@@ -1,0 +1,31 @@
+*{
+    font-family:Georgia, 'Times New Roman', Times, serif ;
+}
+
+nav{
+    display: flex;
+    background-color: black;
+    color: #FCFAEE;
+    padding: 10px;
+}
+
+button{
+    background-color: black;
+    color: #FCFAEE;
+    border: solid;
+    border-color: #FCFAEE;
+    box-shadow: 5px 5px #FFFE00;
+    height: 39px;
+}
+
+.border-shadow-btn{
+    border: solid;
+    border-color: #FCFAEE;
+    box-shadow: 5px 5px #FFFE00;
+}
+
+.border-shadow{
+    border: solid;
+    border-color: black;
+    box-shadow: 5px 5px black;
+}
