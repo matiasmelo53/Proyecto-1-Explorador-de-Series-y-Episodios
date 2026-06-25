@@ -29,3 +29,17 @@ button{
     border-color: black;
     box-shadow: 5px 5px black;
 }
+
+.show{
+    transition: all 0.3s ease-out;
+    width:215px;
+    height:290px;
+    
+}
+
+.show:hover{
+    transition: all 0.3s ease-out;
+    width:225px;
+    height:300px;
+    
+}
