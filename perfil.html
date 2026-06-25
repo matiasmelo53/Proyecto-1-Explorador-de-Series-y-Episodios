@@ -40,17 +40,125 @@
 
                     <div class="d-flex">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-underline">
+
                             <li class="nav-item">
-                                <a href="signin.html">
-                                    <button type="button" class="btn btn-outline-light">Inscribirse</button>
-                                </a>
+                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#Inscribirse">Inscribirse</button>
+                                <div class="modal fade" id="Inscribirse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form  class="row g-2" id="Form" style="border: 1px solid black; box-shadow: 5px 5px black; background-color: #00b0d4; color: #FCFAEE;">
+                                                    <div class="input-group mb-3">
+                                                        <h1 style="font-size: 50px; color: #FCFAEE; text-shadow: 2px 2px black;">Crear Cuenta</h1>
+                                                    </div>
+                                                    <div class="input-group mb-3"><p style="font-size: 20px;">Unete y reseña!</p></div>
+                                                    <div class="input-group mb-3" style="justify-content: space-between;">
+                                                        <label for="nombre">Apodo:</label>
+                                                        <input type="text" name="nombre" placeholder="Cato212" size="35%" style="height: 25px; background-color: white; color: black;">
+                                                    </div>
+                                                    <div class="input-group mb-3" style="justify-content: space-between;">
+                                                        <label for="email">Email:</label>
+                                                        <input type="email" id="email" placeholder="ejemplo@ejemplo.com" size="35%" style="height: 25px; background-color: white; color: black;">
+                                                    </div>
+                                                    <div class="input-group mb-3" style="justify-content: space-between;">
+                                                        <label for="password">Contraseña:</label>
+                                                        <input type="password" id="password" size="35%" style="height: 25px; background-color: white; color: black;">
+                                                    </div>
+                                                    <div class="input-group mb-1" style="justify-content: left;">
+                                                        <div class="mb-1" style="padding-right: 12%;">
+                                                            <label for="genero" >Sexo:</label> 
+                                                        </div>
+                                                        <div class="mb-3" align="left">
+                                                            <input type="radio" id="G1" name="genero" value="mars">
+                                                            <label for="G1">Masculino</label>
+                                                            <input type="radio" id="G2" name="genero" value="venus" >
+                                                            <label for="G2">Feminino</label>
+                                                            <input type="radio" id="G3" name="genero" value="jupiter">
+                                                            <label for="G3">Otro</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="input-group mb-1" style="justify-content: left;">
+                                                        <div class="mb-1" style="padding-right: 12%;">
+                                                            <label>Género Favorito:</label>
+                                                        </div>
+                                                        <div class="mb-3" align="left">
+                                                            <input type="checkbox" id="A1" name="area" value="Horror">
+                                                            <label for="A1">Horror</label><br>
+                                                            <input type="checkbox" id="A2" name="area" value="Romance">
+                                                            <label for="A2">Romance</label><br>
+                                                            <input type="checkbox" id="A3" name="area" value="Comedia">
+                                                            <label for="A3">Comedia</label><br>
+                                                            <input type="checkbox" id="A4" name="area" value="Accion">
+                                                            <label for="A4">Acción</label><br>
+                                                            <input type="checkbox" id="A5" name="area" value="sci-fi">
+                                                            <label for="A5">Ciencia Ficción</label><br>
+                                                            <input type="checkbox" id="A6" name="area" value="Otro">
+                                                            <label for="A6">Otro</label><br>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-secondary"   style=" background-color: black; color: white; border-color: white; box-shadow: 5px 5px #FFFE00; height: 39px;">Enviar</button>
+                                                        <button  type="reset" class="btn btn-secondary"  style=" background-color: black; color: white; border-color: white; box-shadow: 5px 5px #FFFE00; height: 39px;">Borrar</button>              
+                                                        <button type="button" class="btn btn-secondary" style="background-color: black; color: white; border-color: white; box-shadow: 5px 5px #FFFE00; height: 39px;" data-bs-dismiss="modal">Cerrar</button>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
 
                             <li class="nav-item">
-                                <a href="login.html">
-                                    <button type="button" class="btn btn-outline-light" style="margin-left:20px;">Ingresar</button>
-                                </a>
+                                <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#Ingresar">Ingresar</button>
+                                <div class="modal fade" id="Ingresar" tabindex="-1" aria-labelledby="ingresolabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class='login-form'>
+                                                    <fieldset style="padding: 5%; background-color:yellow; box-shadow: 5px 5px black;">
+                                                        <div class="flex-row">
+                                                            <h1 style="font-size: 50px; color: #FCFAEE; text-shadow: 2px 2px black; background-color: #00b0d4;">Iniciar Sesion</h1>
+                                                            <p style="font-size: 20px; color: black;">Nos alegra verte de vuelta!</p>
+                                                        </div>
+                                                        <div class="flex-row">
+                                                            <label class="lf--label" for="username">
+                                                                <svg x="0px" y="0px" width="15px" height="13px">
+                                                                <path fill="#000" d="M8.9,7.2C9,6.9,9,6.7,9,6.5v-4C9,1.1,7.9,0,6.5,0h-1C4.1,0,3,1.1,3,2.5v4c0,0.2,0,0.4,0.1,0.7 C1.3,7.8,0,9.5,0,11.5V13h12v-1.5C12,9.5,10.7,7.8,8.9,7.2z M4,2.5C4,1.7,4.7,1,5.5,1h1C7.3,1,8,1.7,8,2.5v4c0,0.2,0,0.4-0.1,0.6 l0.1,0L7.9,7.3C7.6,7.8,7.1,8.2,6.5,8.2h-1c-0.6,0-1.1-0.4-1.4-0.9L4.1,7.1l0.1,0C4,6.9,4,6.7,4,6.5V2.5z M11,12H1v-0.5 c0-1.6,1-2.9,2.4-3.4c0.5,0.7,1.2,1.1,2.1,1.1h1c0.8,0,1.6-0.4,2.1-1.1C10,8.5,11,9.9,11,11.5V12z"/>
+                                                                </svg>
+                                                            </label>
+                                                            <input id="username" class='lf--input' placeholder='Nombre de usuario' type='text' required style="width: 300px; height: 25px; background-color: white; color: black;">
+                                                        </div>
+                                                        <br>
+                                                        <div class="flex-row">
+                                                            <label class="lf--label" for="password">
+                                                                <svg x="0px" y="0px" width="15px" height="8px">
+                                                                <g>
+                                                                    <path fill="#000" d="M6,2L6,2c0-1.1-1-2-2.1-2H2.1C1,0,0,0.9,0,2.1v0.8C0,4.1,1,5,2.1,5h1.7C5,5,6,4.1,6,2.9V3h5v1h1V3h1v2h1V3h1 V2H6z M5.1,2.9c0,0.7-0.6,1.2-1.3,1.2H2.1c-0.7,0-1.3-0.6-1.3-1.2V2.1c0-0.7,0.6-1.2,1.3-1.2h1.7c0.7,0,1.3,0.6,1.3,1.2V2.9z"/>
+                                                                </g>
+                                                                </svg>
+                                                            </label>
+                                                            <input id="password" class='lf--input' placeholder='Contraseña' type='password' required style="width: 300px; height: 25px; background-color: white; color: black;">
+                                                        </div>
+                                                        <br>
+                                                        <input class='lf--submit btn' type='submit' value='Iniciar Sesion' style="background-color: black; color: white; border-color: white; box-shadow: 5px 5px black; height: 39px;">
+                                                        <button type="button" class="btn btn-secondary" style="background-color: black; color: white; border-color: white; box-shadow: 5px 5px black; height: 39px;" data-bs-dismiss="modal">Cerrar</button>
+
+                                                        <br>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
+
 
                             <li class="nav-item">
                                 <a href="perfil.html">
