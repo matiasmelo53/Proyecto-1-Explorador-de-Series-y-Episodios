@@ -7,7 +7,7 @@ for (let i = 1; i <= 7; i++) {
             let image = document.getElementById("indexRecomendado");
 
             image.innerHTML += `
-            <td style=" align-items: center; padding: 10px;"><a href="shows.html"><img class="show" src="${res.image.medium}" alt="${res.name}"></a></td>`;
+            <td style=" align-items: center; padding: 10px;"><a href="shows.html"><img class="pelicula" src="${res.image.medium}" alt="${res.name}"></a></td>`;
         })
         .catch(error => {
             console.log(error);

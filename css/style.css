@@ -18,6 +18,20 @@ button{
     height: 39px;
 }
 
+.sliderTitulo{
+    background-color: #FFFE00; 
+    padding: 10px; 
+    padding-left: 20px;
+    text-shadow: 3px 3px #00B0D4;
+}
+
+.sliderTituloAlt{
+    background-color: #00B0D4; 
+    padding: 10px; 
+    padding-left: 20px;
+    text-shadow: 3px 3px #FFFE00;
+}
+
 .border-shadow-btn{
     border: solid;
     border-color: #FCFAEE;
@@ -30,16 +44,28 @@ button{
     box-shadow: 5px 5px black;
 }
 
-.show{
+.pelicula{
     transition: all 0.3s ease-out;
     width:215px;
     height:290px;
     
 }
 
-.show:hover{
+.pelicula:hover{
     transition: all 0.3s ease-out;
     width:225px;
     height:300px;
     
 }
+
+a:link{
+    color: #FCFAEE
+} 
+
+a:visited{
+    color:#00B0D4
+}
+
+
+
+
