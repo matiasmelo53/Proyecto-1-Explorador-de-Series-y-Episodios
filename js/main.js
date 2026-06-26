@@ -18,12 +18,14 @@ for (let i = 1; i <= 6; i++) {
 
 const enviar= document.querySelector("#enviar-sign");
 const log= document.querySelector("#btn_log");
+let login=false;
 
 enviar.addEventListener("click",()=>{
   let validform =document.getElementById('Form').checkValidity();
   if(!validform){
     document.getElementById('Form').reportValidity();
   }else{
+    event.preventDefault();
     const nom=document.querySelector("#nombre");
     const email=document.querySelector("#email");
     const passw=document.querySelector("#password");
@@ -46,24 +48,39 @@ enviar.addEventListener("click",()=>{
     localStorage.setItem("Email",email.value);
     localStorage.setItem("Contraseña",passw.value);
     localStorage.setItem("Sexo",sex);
-    localStorage.setItem("Generos",JSON.stringify(genero));
+    if(genero.length!=0){
+      localStorage.setItem("Generos",JSON.stringify(genero));
+    }else{
+      localStorage.setItem("Generos","nada");
+    }
+    console.log("Nom: "+localStorage.getItem("Nombre")+" Email: "+localStorage.getItem("Email")+" contra: "+localStorage.getItem("Contraseña")+" SX: "+localStorage.getItem("Sexo")+" Generos: "+localStorage.getItem("Generos"));
+    document.getElementById('Form').style.display="none";
+    document.querySelector(".sign-in").innerHTML="<h3 class='sliderTitulo' style='color: black;'>Gracias por inscribirte!</h3>";
 
-    
-    console.log("Nom: "+nom.value+" Email: "+email.value+" contra: "+passw.value+" SX: "+sex+" Generos: "+genero);
-    
-    event.preventDefault();
   }
 });
 
 log.addEventListener("click",()=>{
   let validform =document.querySelector('.login-form').checkValidity();
-  console.log(validform);
   if(!validform){
     document.querySelector('.login-form').reportValidity();
   }else{
     let nam_log = document.querySelector("#username");
     let pass_log= document.querySelector("#password_log");
-    console.log("Name: "+nam_log.value+" Pass: "+pass_log.value);
+    if(nam_log.value==localStorage.getItem("Nombre") && pass_log.value==localStorage.getItem("Contraseña")){
+      login=true;
+    }
+    if(login==true){
+      document.querySelector('.login-form').style.display="none";
+      document.querySelector(".login_space").innerHTML="<h1 style='font-size: 50px; color: #FCFAEE; text-shadow: 2px 2px black; background-color: #00b0d4;'>Sesion Iniciada</h1>";
+    }else{
+      let alerta= document.createElement('p');
+      let text= document.createTextNode("Algo salió mal, contraseña o usuario erroneo.");
+      alerta.appendChild(text);
+      alerta.style.cssText = 'color: black; text-shadow: 1px 1px #00B0D4;';
+      document.querySelector('#Space_alert').appendChild(alerta);
+      document.querySelector('.login-form').reset();
+    }
     event.preventDefault();
   }
 });
