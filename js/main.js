@@ -22,7 +22,7 @@ const enviar= document.querySelector("#enviar-sign");
 const log= document.querySelector("#btn_log");
 const perfil_nav= document.querySelector(".profile");
 const form_btn= document.querySelectorAll(".form-btn");
-console.log(form_btn[1]);
+
 perfil_nav.style.display="none";
 
 enviar.addEventListener("click",()=>{
@@ -58,7 +58,7 @@ enviar.addEventListener("click",()=>{
     localStorage.setItem("Contraseña",passw.value);
     localStorage.setItem("Sexo",sex);
     localStorage.setItem("Generos",JSON.stringify(genero));
-    
+
     document.getElementById('Form').style.display="none";
     document.querySelector(".sign-in").innerHTML="<h3 class='sliderTitulo' style='color: black;'>Gracias por inscribirte!</h3>";
   }
@@ -98,4 +98,12 @@ log.addEventListener("click",()=>{
     event.preventDefault();
   }
 });
+
+if (sessionStorage.getItem("login")=="True"){
+    //Mostrar los botones escondidos, esconder los ya usados
+    form_btn.forEach(e=>{
+        e.style.display="none";
+    });
+    perfil_nav.style.display="block";
+}
 

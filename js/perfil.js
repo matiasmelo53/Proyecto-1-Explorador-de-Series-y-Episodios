@@ -11,7 +11,7 @@ let gens_list="";
 Sesion.style.display="none";
 Borrar.style.display="none";
 
-console.log("data: "+nom,localStorage.getItem("Contraseña"));
+//console.log("data: "+nom,localStorage.getItem("Contraseña")); 
 
 if (sessionStorage.getItem("login")=="True"){
     //Mostrar los botones escondidos, esconder los ya usados
