@@ -26,6 +26,7 @@ console.log(form_btn[1]);
 perfil_nav.style.display="none";
 
 enviar.addEventListener("click",()=>{
+  sessionStorage.setItem("login","False");
   let validform =document.getElementById('Form').checkValidity();
   if(!validform){
     document.getElementById('Form').reportValidity();
@@ -48,20 +49,20 @@ enviar.addEventListener("click",()=>{
         genero.push(element.value);
       }
     });
+    if(genero.length==0){
+      genero.push("Ninguno");
+    }
     
     localStorage.setItem("Nombre",nom.value);
     localStorage.setItem("Email",email.value);
     localStorage.setItem("Contraseña",passw.value);
     localStorage.setItem("Sexo",sex);
-    if(genero.length!=0){
-      localStorage.setItem("Generos",JSON.stringify(genero));
-    }else{
-      localStorage.setItem("Generos","nada");
-    }
+    localStorage.setItem("Generos",JSON.stringify(genero));
+    
     document.getElementById('Form').style.display="none";
     document.querySelector(".sign-in").innerHTML="<h3 class='sliderTitulo' style='color: black;'>Gracias por inscribirte!</h3>";
-
   }
+
 });
 
 log.addEventListener("click",()=>{
@@ -80,10 +81,11 @@ log.addEventListener("click",()=>{
       document.querySelector('.login-form').style.display="none";
       document.querySelector(".login_space").innerHTML="<h1 style='font-size: 50px; color: #FCFAEE; text-shadow: 2px 2px black; background-color: #00b0d4;'>Sesion Iniciada</h1>";
       perfil_nav.style.display="block";
-      document.getElementById("Close-btn").addEventListener("click",()=>{
+      document.querySelectorAll(".btn-close")[1].addEventListener("click",()=>{
         form_btn.forEach(e=>{
           e.style.display="none";
         });
+        window.location.reload();
       });
     }else{
       let alerta= document.createElement('p');

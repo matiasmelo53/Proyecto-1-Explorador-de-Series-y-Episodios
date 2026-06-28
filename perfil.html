@@ -118,7 +118,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" id="Close-btn" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body login_space">
                                                 <form class='login-form'>
@@ -180,7 +180,11 @@
                     <td style="width: 85%; padding-left: 5%;">
                         <h1 id="usuarioNombre">Usuario</h1>
                         <p id="usuarioFecha">Se unio el 23/06/2026</p>
-                        <h3 id="usuarioGenero">Genero favorito: Horror</h3>
+                        <h3 id="usuarioGenero">Genero favorito: </h3>
+                        <div class="row">
+                            <div class="col-2"><button id="cerrar-ses" type="button" class="btn btn-outline-dark">Cerrar sesión</button></div>
+                            <div class="col-2"><button id="borrar-ses" type="button" class="btn btn-outline-dark">Borrar sesión</button></div>
+                        </div>
                     </td>
                 </tr>
             </table>
