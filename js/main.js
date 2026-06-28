@@ -20,6 +20,10 @@ for (let i = 1; i <= 6; i++) {
 
 const enviar= document.querySelector("#enviar-sign");
 const log= document.querySelector("#btn_log");
+const perfil_nav= document.querySelector(".profile");
+const form_btn= document.querySelectorAll(".form-btn");
+console.log(form_btn[1]);
+perfil_nav.style.display="none";
 
 enviar.addEventListener("click",()=>{
   let validform =document.getElementById('Form').checkValidity();
@@ -68,13 +72,19 @@ log.addEventListener("click",()=>{
     let nam_log = document.querySelector("#username");
     let pass_log= document.querySelector("#password_log");
     if(nam_log.value==localStorage.getItem("Nombre") && pass_log.value==localStorage.getItem("Contraseña")){
-      localStorage.setItem("login","True");
+      sessionStorage.setItem("login","True");
     }else{
-      localStorage.setItem("login","False");
+      sessionStorage.setItem("login","False");
     }
-    if(localStorage.getItem("login")=="True"){
+    if(sessionStorage.getItem("login")=="True"){
       document.querySelector('.login-form').style.display="none";
       document.querySelector(".login_space").innerHTML="<h1 style='font-size: 50px; color: #FCFAEE; text-shadow: 2px 2px black; background-color: #00b0d4;'>Sesion Iniciada</h1>";
+      perfil_nav.style.display="block";
+      document.getElementById("Close-btn").addEventListener("click",()=>{
+        form_btn.forEach(e=>{
+          e.style.display="none";
+        });
+      });
     }else{
       let alerta= document.createElement('p');
       let text= document.createTextNode("Algo salió mal, contraseña o usuario erroneo.");
@@ -83,7 +93,7 @@ log.addEventListener("click",()=>{
       document.querySelector('#Space_alert').appendChild(alerta);
       document.querySelector('.login-form').reset();
     }
-
     event.preventDefault();
   }
 });
+
