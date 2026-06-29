@@ -8,6 +8,14 @@ const getData = () =>
     console.log("Error encontrado:", err);
   });
 
+const list=[];
+if(!localStorage.getItem("Fav")){
+  localStorage.setItem("Fav",JSON.stringify(list));
+}
+if(!localStorage.getItem("Later")){
+  localStorage.setItem("Later",JSON.stringify(list));
+}
+
 const Caratula=document.querySelector(".img");
 const Titulo=document.querySelector(".showTitulo");
 const Status=document.querySelector("#showStatus");
@@ -18,6 +26,18 @@ const Genero=document.querySelector("#showGenero");
 const Link=document.querySelector("#showSitio");
 const Descripcion=document.querySelector("#showDesc");
 
+const icon = document.querySelectorAll(".deactivated");
+const icon2 = document.querySelectorAll(".activated");
+
+icon2.forEach(a=>{
+  a.style.display="none";
+});
+
+const btn_Fav=document.querySelector(".favorito");
+const btn_Late=document.querySelector(".mas_tarde");
+
+btn_Fav.style.display="none";
+btn_Late.style.display="none";
 
 const API = getData();
 API.then((result) =>{
@@ -34,5 +54,35 @@ API.then((result) =>{
     }
     Link.innerHTML=`<b>Disponible en:</b> <a style="color: black;" href="${result.network.officialSite}">${result.network.name}</a>`;
     Descripcion.innerHTML=`<b>Sinopsis:</b> <p><b>${result.name}</b>${result.summary}</p>`;
+});
 
+if(sessionStorage.getItem("login")=="True"){
+  
+  btn_Late.style.display="inline";
+  btn_Fav.style.display="inline";
+  
+  }
+
+btn_Fav.addEventListener("click",()=>{
+  icon2[0].style.display="block";
+  icon[0].style.display="none";
+  let fav_list=JSON.parse(localStorage.getItem("Fav"));
+  if(!fav_list.includes(URL)){
+    fav_list.push(URL);
+  }
+  localStorage.setItem("Fav",JSON.stringify(fav_list));
+  
+  console.log("Lista favoritos: ",localStorage.getItem("Fav"));
+});
+
+btn_Late.addEventListener("click",()=>{
+  icon2[1].style.display="block";
+  icon[1].style.display="none";
+  let fav_lat=JSON.parse(localStorage.getItem("Later"));
+  if(!fav_lat.includes(URL)){
+    fav_lat.push(URL);
+  }
+  localStorage.setItem("Later",JSON.stringify(fav_lat));
+  
+  console.log("Lista ver más tarde: ",localStorage.getItem("Later"));
 });
