@@ -1,109 +1,120 @@
-
-for (let i = 1; i <= 6; i++) {
-    fetch("https://api.tvmaze.com/shows/"+i)
-        //.then(res => console.log(result))
-        .then(response => response.json())
-        .then(res => {
-            let image = document.getElementById("indexRecomendado");
-            if(image){
-              image.innerHTML += `
-              <td style=" align-items: center; padding: 10px;"><a href="shows.html"><img class="pelicula" src="${res.image.medium}" alt="${res.name}"></a></td>`;
-        
-            }
-          })
-        .catch(error => {
-            console.log(error);
-            let recomendado = document.getElementById("indexRecomendado");
-            recomendado.innerHTML += `<td style=" align-items: center; padding: 10px;" ><a href="shows.html">Hubo un problema al cargar la serie.   Index=${i}. Error: ${error}</td>`;
-        });
-}
-
-const enviar= document.querySelector("#enviar-sign");
-const log= document.querySelector("#btn_log");
-const perfil_nav= document.querySelector(".profile");
-const form_btn= document.querySelectorAll(".form-btn");
-
-perfil_nav.style.display="none";
-
-enviar.addEventListener("click",()=>{
-  sessionStorage.setItem("login","False");
-  let validform =document.getElementById('Form').checkValidity();
-  if(!validform){
-    document.getElementById('Form').reportValidity();
-  }else{
-    event.preventDefault();
-    const nom=document.querySelector("#nombre");
-    const email=document.querySelector("#email");
-    const passw=document.querySelector("#password");
-    const sex_list=document.querySelectorAll("input[name='sex']");
-    let sex="";
-    let genero=[];
-    sex_list.forEach(e=>{
-      if(e.checked==true){
-        sex=e.value;
-      }
-    });
-    const gens_list=document.querySelectorAll(".genero");
-    gens_list.forEach(element => {
-      if(element.checked==true){
-        genero.push(element.value);
-      }
-    });
-    if(genero.length==0){
-      genero.push("Ninguno");
-    }
-    
-    localStorage.setItem("Nombre",nom.value);
-    localStorage.setItem("Email",email.value);
-    localStorage.setItem("Contraseña",passw.value);
-    localStorage.setItem("Sexo",sex);
-    localStorage.setItem("Generos",JSON.stringify(genero));
-
-    document.getElementById('Form').style.display="none";
-    document.querySelector(".sign-in").innerHTML="<h3 class='sliderTitulo' style='color: black;'>Gracias por inscribirte!</h3>";
-  }
-
-});
-
-log.addEventListener("click",()=>{
-  let validform =document.querySelector('.login-form').checkValidity();
-  if(!validform){
-    document.querySelector('.login-form').reportValidity();
-  }else{
-    let nam_log = document.querySelector("#username");
-    let pass_log= document.querySelector("#password_log");
-    if(nam_log.value==localStorage.getItem("Nombre") && pass_log.value==localStorage.getItem("Contraseña")){
-      sessionStorage.setItem("login","True");
-    }else{
-      sessionStorage.setItem("login","False");
-    }
-    if(sessionStorage.getItem("login")=="True"){
-      document.querySelector('.login-form').style.display="none";
-      document.querySelector(".login_space").innerHTML="<h1 style='font-size: 50px; color: #FCFAEE; text-shadow: 2px 2px black; background-color: #00b0d4;'>Sesion Iniciada</h1>";
-      perfil_nav.style.display="block";
-      document.querySelectorAll(".btn-close")[1].addEventListener("click",()=>{
-        form_btn.forEach(e=>{
-          e.style.display="none";
-        });
-        window.location.reload();
-      });
-    }else{
-      let alerta= document.createElement('p');
-      let text= document.createTextNode("Algo salió mal, contraseña o usuario erroneo.");
-      alerta.appendChild(text);
-      alerta.style.cssText = 'color: black; text-shadow: 1px 1px #00B0D4;';
-      document.querySelector('#Space_alert').appendChild(alerta);
-      document.querySelector('.login-form').reset();
-    }
-    event.preventDefault();
-  }
-});
-
+'use strict';
+const Seccion_ver=document.querySelector("#Ver_Tarde");//sección de ver más tarde
+Seccion_ver.style.display="none";
 if (sessionStorage.getItem("login")=="True"){
-    //Mostrar los botones escondidos, esconder los ya usados
-    form_btn.forEach(e=>{
-        e.style.display="none";
-    });
-    perfil_nav.style.display="block";
+  Seccion_ver.style.display="block";
 }
+//genarización de datos de la api
+const getData = () =>
+  fetch("https://api.tvmaze.com/shows").then((response) =>
+    response.json()
+  ).catch((err) => {
+    console.log("Error encontrado:", err);
+  });
+
+const API = getData();
+
+sessionStorage.setItem("contador_1",0);sessionStorage.setItem("contador_2",0);
+sessionStorage.setItem("contador_3",0);sessionStorage.setItem("contador_4",0);
+sessionStorage.setItem("contador_5",0);
+//contador que define la cantidad de cartas en el slide
+
+sessionStorage.setItem("id_1",0);sessionStorage.setItem("id_2",0);
+sessionStorage.setItem("id_3",0);sessionStorage.setItem("id_4",0);
+sessionStorage.setItem("id_5",0);
+//cambia la seleccion de slide 
+
+
+let add_slide= (slideID,indexID,pos,id)=>{
+  let carrusel=document.querySelectorAll(".carousel-inner");//espacio carrusel
+  let slide=document.querySelector("#"+slideID);//espacio slide
+  
+  let clone = slide.cloneNode(true);//copia
+  clone.classList.remove('active');//cambio de clase
+  clone.setAttribute("id", slideID+id);//cambio de id
+  carrusel[pos].insertAdjacentElement("beforeend",clone);
+
+  
+  let image = document.querySelectorAll("#"+indexID+"0");
+ 
+
+  image[1].setAttribute("id", indexID+(Math.floor(id)+1));
+  image[1].innerHTML="";
+}
+
+let add_card= (e,slideID,indexID,pos,id,contador)=>{
+  let image = document.getElementById(indexID+id);
+  if(image){
+    image.innerHTML += `
+    <td style=" align-items: center; padding: 10px;"><a href="shows.html" class='link_img' id="${e._links.self.href}" ><img class="pelicula" src="${e.image.medium}" alt="${e.name}"></a></td>`; 
+  }
+  if(contador==6){
+    add_slide(slideID,indexID,pos,id);
+  }
+}
+
+API.then((result) => {//Uso de la api
+  if(result){
+      result.forEach(element => {//recorre toda la api
+        //Aplicar api en el index
+          let len = Object.keys(element.genres).length;
+          
+          for (let i=0; i<len;i++ ){//recorre array genero
+            if(element.genres[i]=="Science-Fiction"){
+              sessionStorage.setItem("contador_1",Math.floor(sessionStorage.getItem("contador_1"))+1);
+              add_card(element,"Slide-CienciaFiccion","index-CienciaFiccion",1,sessionStorage.getItem("id_1"),sessionStorage.getItem("contador_1"));
+              //añade elemento al display
+              if(sessionStorage.getItem("contador_1")=="6"){
+                sessionStorage.setItem("contador_1",0);
+                sessionStorage.setItem("id_1",Math.floor(sessionStorage.getItem("id_1"))+1);
+                //la cantidad de cartas mostradas
+              }
+            }
+            if(element.genres[i]=="Horror"){
+              sessionStorage.setItem("contador_2",Math.floor(sessionStorage.getItem("contador_2"))+1);
+              add_card(element,"Slide-Horror","index-Horror",2,sessionStorage.getItem("id_2"),sessionStorage.getItem("contador_2"));
+              if(sessionStorage.getItem("contador_2")=="6"){
+                sessionStorage.setItem("contador_2",0);
+                sessionStorage.setItem("id_2",Math.floor(sessionStorage.getItem("id_2"))+1);
+              }
+              
+            }
+            if(element.genres[i]=="Romance"){
+              add_card(element,"Slide-Romance","index-Romance",3,sessionStorage.getItem("id_3"),sessionStorage.getItem("contador_3"));
+              if(sessionStorage.getItem("contador_3")=="6"){
+                sessionStorage.setItem("contador_3",0);
+                sessionStorage.setItem("id_3",Math.floor(sessionStorage.getItem("id_3"))+1);
+              }
+              sessionStorage.setItem("contador_3",Math.floor(sessionStorage.getItem("contador_3"))+1);
+            }
+            if(element.genres[i]=="Comedy"){
+              sessionStorage.setItem("contador_4",Math.floor(sessionStorage.getItem("contador_4"))+1);
+              add_card(element,"Slide-Comedy","index-Comedy",4,sessionStorage.getItem("id_4"),sessionStorage.getItem("contador_4"));
+              if(sessionStorage.getItem("contador_4")=="6"){
+                sessionStorage.setItem("contador_4",0);
+                sessionStorage.setItem("id_4",Math.floor(sessionStorage.getItem("id_4"))+1);
+              }
+            }
+            if(element.genres[i]=="Action"){
+              sessionStorage.setItem("contador_5",Math.floor(sessionStorage.getItem("contador_5"))+1);
+              add_card(element,"Slide-Action","index-Action",5,sessionStorage.getItem("id_5"),sessionStorage.getItem("contador_5"));
+              if(sessionStorage.getItem("contador_5")=="6"){
+                sessionStorage.setItem("contador_5",0);
+                sessionStorage.setItem("id_5",Math.floor(sessionStorage.getItem("id_5"))+1);
+              }
+            }
+          }
+      });
+  }
+  //aplicar interacción a las imagenes
+  const Imagenes=document.querySelectorAll(".link_img");
+  Imagenes.forEach(Img=>{
+    Img.addEventListener("click",()=>{
+      localStorage.setItem("ID",Img.id);
+      console.log(Img.id);
+    });
+  });
+});
+
+
 
