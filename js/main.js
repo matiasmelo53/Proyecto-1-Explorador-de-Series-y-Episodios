@@ -5,10 +5,12 @@ for (let i = 1; i <= 6; i++) {
         .then(response => response.json())
         .then(res => {
             let image = document.getElementById("indexRecomendado");
-
-            image.innerHTML += `
-            <td style=" align-items: center; padding: 10px;"><a href="shows.html"><img class="pelicula" src="${res.image.medium}" alt="${res.name}"></a></td>`;
-        })
+            if(image){
+              image.innerHTML += `
+              <td style=" align-items: center; padding: 10px;"><a href="shows.html"><img class="pelicula" src="${res.image.medium}" alt="${res.name}"></a></td>`;
+        
+            }
+          })
         .catch(error => {
             console.log(error);
             let recomendado = document.getElementById("indexRecomendado");
@@ -18,9 +20,13 @@ for (let i = 1; i <= 6; i++) {
 
 const enviar= document.querySelector("#enviar-sign");
 const log= document.querySelector("#btn_log");
-let login=false;
+const perfil_nav= document.querySelector(".profile");
+const form_btn= document.querySelectorAll(".form-btn");
+
+perfil_nav.style.display="none";
 
 enviar.addEventListener("click",()=>{
+  sessionStorage.setItem("login","False");
   let validform =document.getElementById('Form').checkValidity();
   if(!validform){
     document.getElementById('Form').reportValidity();
@@ -43,21 +49,20 @@ enviar.addEventListener("click",()=>{
         genero.push(element.value);
       }
     });
+    if(genero.length==0){
+      genero.push("Ninguno");
+    }
     
     localStorage.setItem("Nombre",nom.value);
     localStorage.setItem("Email",email.value);
     localStorage.setItem("Contraseña",passw.value);
     localStorage.setItem("Sexo",sex);
-    if(genero.length!=0){
-      localStorage.setItem("Generos",JSON.stringify(genero));
-    }else{
-      localStorage.setItem("Generos","nada");
-    }
-    console.log("Nom: "+localStorage.getItem("Nombre")+" Email: "+localStorage.getItem("Email")+" contra: "+localStorage.getItem("Contraseña")+" SX: "+localStorage.getItem("Sexo")+" Generos: "+localStorage.getItem("Generos"));
+    localStorage.setItem("Generos",JSON.stringify(genero));
+
     document.getElementById('Form').style.display="none";
     document.querySelector(".sign-in").innerHTML="<h3 class='sliderTitulo' style='color: black;'>Gracias por inscribirte!</h3>";
-
   }
+
 });
 
 log.addEventListener("click",()=>{
@@ -68,11 +73,20 @@ log.addEventListener("click",()=>{
     let nam_log = document.querySelector("#username");
     let pass_log= document.querySelector("#password_log");
     if(nam_log.value==localStorage.getItem("Nombre") && pass_log.value==localStorage.getItem("Contraseña")){
-      login=true;
+      sessionStorage.setItem("login","True");
+    }else{
+      sessionStorage.setItem("login","False");
     }
-    if(login==true){
+    if(sessionStorage.getItem("login")=="True"){
       document.querySelector('.login-form').style.display="none";
       document.querySelector(".login_space").innerHTML="<h1 style='font-size: 50px; color: #FCFAEE; text-shadow: 2px 2px black; background-color: #00b0d4;'>Sesion Iniciada</h1>";
+      perfil_nav.style.display="block";
+      document.querySelectorAll(".btn-close")[1].addEventListener("click",()=>{
+        form_btn.forEach(e=>{
+          e.style.display="none";
+        });
+        window.location.reload();
+      });
     }else{
       let alerta= document.createElement('p');
       let text= document.createTextNode("Algo salió mal, contraseña o usuario erroneo.");
@@ -84,3 +98,12 @@ log.addEventListener("click",()=>{
     event.preventDefault();
   }
 });
+
+if (sessionStorage.getItem("login")=="True"){
+    //Mostrar los botones escondidos, esconder los ya usados
+    form_btn.forEach(e=>{
+        e.style.display="none";
+    });
+    perfil_nav.style.display="block";
+}
+
