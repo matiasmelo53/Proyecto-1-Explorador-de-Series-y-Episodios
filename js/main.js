@@ -13,6 +13,14 @@ const getData = () =>
     console.log("Error encontrado:", err);
   });
 
+//genarización de datos de la api
+const getData = () =>
+  fetch("https://api.tvmaze.com/shows").then((response) =>
+    response.json()
+  ).catch((err) => {
+    console.log("Error encontrado:", err);
+  });
+
 const API = getData();
 
 sessionStorage.setItem("contador_1",0);sessionStorage.setItem("contador_2",0);
