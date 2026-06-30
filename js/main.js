@@ -142,8 +142,6 @@ if(JSON.parse(localStorage.getItem("Later"))){
         });
         const API = getData();
 
-
-
         API.then((res=>{
           //e,slideID,indexID,pos,id,contador
           contador_7++;
@@ -152,12 +150,12 @@ if(JSON.parse(localStorage.getItem("Later"))){
             contador_7=0;
             id_7++;
           }
-          const Imagenes=document.querySelectorAll(".pelicula");
+          const Imagenes=document.querySelectorAll(".link_img");
           Imagenes.forEach(Img=>{
-              Img.addEventListener("click",()=>{
+            Img.addEventListener("click",()=>{
               localStorage.setItem("ID",Img.id);
-              console.log(Img.id);
-              });
+          
+            });
           });
         }));
     }
