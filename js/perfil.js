@@ -7,7 +7,11 @@ const Borrar=document.querySelector("#borrar-ses");
 let nom=localStorage.getItem("Nombre");
 let gens=localStorage.getItem("Generos");
 let gens_list="";
+const Fav_Space=document.querySelector("#Fav_space");
+const Later_Space=document.querySelector("#Later_Space");
 
+Fav_Space.style.display="none";
+Later_Space.style.display="none";
 Sesion.style.display="none";
 Borrar.style.display="none";
 
@@ -21,6 +25,8 @@ if (sessionStorage.getItem("login")=="True"){
     perfil_nav.style.display="block";
     Sesion.style.display="Block";
     Borrar.style.display="block";
+    Fav_Space.style.display="block";
+    Later_Space.style.display="block";
 
     //mostrar datos recolectados.
     Space_nom.innerHTML=nom;
@@ -52,3 +58,67 @@ Borrar.addEventListener("click",()=>{
     }
 });
 
+
+
+
+if(JSON.parse(localStorage.getItem("Fav"))){
+    const URL =JSON.parse(localStorage.getItem("Fav"));
+    let len=Object.keys(URL).length;
+    for(let i=0; i<len;i++){
+        console.log(URL[i]);
+        //iniciar api
+        const getData = () =>
+        fetch(URL[i]).then((response) =>
+            response.json()
+        ).catch((err) => {
+            console.log("Error encontrado:", err);
+        });
+        const API = getData();
+        API.then((res=>{
+            Fav_Space.innerHTML+=`<td style=" align-items: center; "><a href="shows.html"><img class="pelicula" id="${res._links.self.href}" src="${res.image.medium}" alt="${res.name}" width="50%"></a></td>`;
+            
+            const Imagenes=document.querySelectorAll(".pelicula");
+            Imagenes.forEach(Img=>{
+                Img.addEventListener("click",()=>{
+                localStorage.setItem("ID",Img.id);
+                console.log(Img.id);
+                });
+            });
+        }));
+    }
+    
+}else{
+    Fav_Space.innerHTML+=`<td style=" align-items: center; "><p>Usa el ♥ para guardar tus shows favoritos</p></td>`;
+            
+}
+
+if(JSON.parse(localStorage.getItem("Later"))){
+    const URL =JSON.parse(localStorage.getItem("Later"));
+    let len=Object.keys(URL).length;
+    for(let i=0; i<len;i++){
+        console.log(URL[i]);
+        //iniciar api
+        const getData = () =>
+        fetch(URL[i]).then((response) =>
+            response.json()
+        ).catch((err) => {
+            console.log("Error encontrado:", err);
+        });
+        const API = getData();
+        API.then((res=>{
+            Later_Space.innerHTML+=`<td style=" align-items: center; "><a href="shows.html"><img class="pelicula" id="${res._links.self.href}" src="${res.image.medium}" alt="${res.name}" width="50%"></a></td>`;
+            
+            const Imagenes=document.querySelectorAll(".pelicula");
+            Imagenes.forEach(Img=>{
+                Img.addEventListener("click",()=>{
+                localStorage.setItem("ID",Img.id);
+                console.log(Img.id);
+                });
+            });
+        }));
+    }
+    
+}else{
+    Later_Space.innerHTML+=`<td style=" align-items: center; "><p>Usa el 𖤘 para guardar tus shows favoritos</p></td>`;
+            
+}

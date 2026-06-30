@@ -48,11 +48,10 @@ API.then((result) =>{
     Fin.innerHTML=`Se terminó el ${result.ended}`;
     Lenguaje.innerHTML=`Lenguaje: ${result.language}`;
     let len = Object.keys(result.genres).length;
-    console.log(Genero);
     for(let i=0; i<len;i++){
         Genero.innerHTML+=result.genres[i]+" ";
     }
-    Link.innerHTML=`<b>Disponible en:</b> <a style="color: black;" href="${result.network.officialSite}">${result.network.name}</a>`;
+    Link.innerHTML=`<b>Disponible en:</b> <a style="color: black;" href="${result.officialSite}">${result.network.name}</a>`;
     Descripcion.innerHTML=`<b>Sinopsis:</b> <p><b>${result.name}</b>${result.summary}</p>`;
 });
 
@@ -61,7 +60,7 @@ if(sessionStorage.getItem("login")=="True"){
   btn_Late.style.display="inline";
   btn_Fav.style.display="inline";
   
-  }
+}
 
 btn_Fav.addEventListener("click",()=>{
   icon2[0].style.display="block";
