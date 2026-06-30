@@ -1,66 +1,117 @@
+'use strict';
+const URL =localStorage.getItem("ID");
+console.log(URL);
+const getData = (URL) =>
+  fetch(URL).then((response) =>
+    response.json()
+  ).catch((err) => {
+    console.log("Error encontrado:", err);
+    window.close;
+  });
 
-console.log();
+const list=[];
+if(!localStorage.getItem("Fav")){
+  localStorage.setItem("Fav",JSON.stringify(list));
+}
+if(!localStorage.getItem("Later")){
+  localStorage.setItem("Later",JSON.stringify(list));
+}
 
-fetch("https://api.tvmaze.com/shows/"+localStorage.getItem("currentShow"))
-        //.then(res => console.log(result))
-        .then(response => response.json())
-        .then(res => {
-            let imagen = document.getElementById("showImagen");
-            let titulo = document.getElementById("showTitulo");
-            let status = document.getElementById("showStatus");
-            let estreno = document.getElementById("showEstreno");
-            let fin = document.getElementById("showFin");
-            let lenguaje = document.getElementById("showLenguaje");
-            let generos = document.getElementById("showGenero");
-            let sitio = document.getElementById("showSitio");
-            let descripcion = document.getElementById("showDesc");
+const Caratula=document.querySelector(".img");
+const Titulo=document.querySelector(".showTitulo");
+const Status=document.querySelector("#showStatus");
+const Estreno=document.querySelector("#showEstreno");
+const Fin=document.querySelector("#showFin");
+const Lenguaje=document.querySelector("#showLenguaje");
+const Genero=document.querySelector("#showGenero");
+const Link=document.querySelector("#showSitio");
+const Descripcion=document.querySelector("#showDesc");
 
-            imagen.innerHTML = `<img src="${res.image.medium}" class="caratula" alt="${res.name}" width="250px;">`;
-            titulo.innerHTML = `<h1>${res.name}</h1>`;
-            status.innerHTML = `Status: ${res.status}`;
+const icon = document.querySelectorAll(".deactivated");
+const icon2 = document.querySelectorAll(".activated");
 
-            estreno.innerHTML = `Se estrenó el ${res.premiered}`;
-            if (res.ended){
-                fin.innerHTML = `Se terminó el ${res.ended}`;
-            } else{
-                fin.innerHTML = ``;
-            }
-            
-            lenguaje.innerHTML = `Lenguajes disponibles: ${res.language}`;
-            generos.innerHTML = `<b>Generos:</b> ${res.genres}`;
-            sitio.innerHTML = `<b>Disponible en:</b> <a style="color: blue" href="${res.network.officialSite}">${res.network.name}</a>`;
-            descripcion.innerHTML = `<b>Sinopsis:</b> ${res.summary}`;
-            
+icon2.forEach(a=>{
+  a.style.display="none";
+});
+
+const btn_Fav=document.querySelector(".favorito");
+const btn_Late=document.querySelector(".mas_tarde");
+
+btn_Fav.style.display="none";
+btn_Late.style.display="none";
+
+const API = getData(URL);
+API.then((result) =>{
+    Caratula.innerHTML = `<img src="${result.image.original}" class="caratula" alt="${result.name}"  width="250px;">`; 
+    Titulo.innerHTML=`<h1>${result.name}</h1>`;
+    Status.innerHTML=`Status: ${result.status}`;
+    Estreno.innerHTML=`Se estrenó el ${result.premiered}`;
+    if(result.status=="Ended"){Fin.innerHTML=`Se terminó el ${result.ended}`;}
+    Lenguaje.innerHTML=`Lenguaje: ${result.language}`;
+    let len = Object.keys(result.genres).length;
+    for(let i=0; i<len;i++){
+        Genero.innerHTML+=result.genres[i]+" ";
+    }
+    Link.innerHTML=`<b>Disponible en:</b> <a style="color: black;" href="${result.officialSite}">${result.network.name}</a>`;
+    Descripcion.innerHTML=`<b>Sinopsis:</b> <p><b>${result.name}</b>${result.summary}</p>`;
+    let id_show=result.id;
+    fetch("https://api.tvmaze.com/shows/"+id_show+"/episodes")
+      .then(response => response.json())
+      .then(res => {
+          let episodios = document.getElementById("showEpisodios")
+          res.forEach(episode => {
+              episodios.innerHTML += 
+              `<div class="col">
+                  <div class="card" style="width: 18rem; height:13rem;">
+                      <img class="card-img-top" src="${episode.image.medium}">
+                      <div class="card-body">
+                          <p style="font-size: 0.9rem;" class="card-title">${episode.name}</p>
+                      </div>
+                  </div>
+              </div>`; 
+          });
           })
-        .catch(error => {
-            console.log(error);
-            let descripcion = document.getElementById("showDesc");
-            descripcion.innerHTML = `Hubo un problema al cargar los datos de la serie. Error: ${error}`;
-        });
 
-fetch("https://api.tvmaze.com/shows/"+localStorage.getItem("currentShow")+"/episodes")
-    .then(response => response.json())
-    .then(res => {
-        let episodios = document.getElementById("showEpisodios")
-        res.forEach(episode => {
+      .catch(error =>{
+          console.log(error);
+          let episodios = document.getElementById("showEpisodios")
+          episodios.innerHTML = `Hubo un problema al cargar los episodios de la serie. Error: ${error}`;
+      })
+    console.log(id_show);
+});
 
-            episodios.innerHTML += 
-            `<div class="col">
-                <div class="card" style="width: 18rem; height:13rem;">
-                    <img class="card-img-top" src="${episode.image.medium}">
-                    <div class="card-body">
-                        <p style="font-size: 0.9rem;" class="card-title">${episode.name}</p>
-                    </div>
-                </div>
-            </div>`; 
-        });
-        })
 
-    .catch(error =>{
-        console.log(error);
-        let episodios = document.getElementById("showEpisodios")
-        episodios.innerHTML = 
-        `<div class="col">
-            Hubo un problema al cargar los episodios de la serie. Error: ${error}
-        </div>`;
-    })
+
+
+if(sessionStorage.getItem("login")=="True"){
+  
+  btn_Late.style.display="inline";
+  btn_Fav.style.display="inline";
+  
+}
+
+btn_Fav.addEventListener("click",()=>{
+  icon2[0].style.display="block";
+  icon[0].style.display="none";
+  let fav_list=JSON.parse(localStorage.getItem("Fav"));
+  if(!fav_list.includes(URL)){
+    fav_list.push(URL);
+  }
+  localStorage.setItem("Fav",JSON.stringify(fav_list));
+  
+  console.log("Lista favoritos: ",localStorage.getItem("Fav"));
+});
+
+btn_Late.addEventListener("click",()=>{
+  icon2[1].style.display="block";
+  icon[1].style.display="none";
+  let fav_lat=JSON.parse(localStorage.getItem("Later"));
+  if(!fav_lat.includes(URL)){
+    fav_lat.push(URL);
+  }
+  localStorage.setItem("Later",JSON.stringify(fav_lat));
+  
+  console.log("Lista ver más tarde: ",localStorage.getItem("Later"));
+});
+
+
