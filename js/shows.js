@@ -49,7 +49,7 @@ fetch("https://api.tvmaze.com/shows/"+localStorage.getItem("currentShow")+"/epis
                 <div class="card" style="width: 18rem; height:13rem;">
                     <img class="card-img-top" src="${episode.image.medium}">
                     <div class="card-body">
-                        <h5 class="card-title">${episode.name}</h5>
+                        <p style="font-size: 0.9rem;" class="card-title">${episode.name}</p>
                     </div>
                 </div>
             </div>`; 

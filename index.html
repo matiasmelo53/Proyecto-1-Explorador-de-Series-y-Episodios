@@ -6,6 +6,7 @@
 
     <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="js/inicio.js"></script>
     <script src="js/main.js"></script>
     <script src="js/perfil.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
@@ -173,12 +174,44 @@
         </nav>
 
         <div class="slider" id="Recomendadas" style="margin-top: 2%; margin-left: 1%;">
-            <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
-                <tr><td colspan="7" class="sliderTitulo"><h2>Recomendadas</h2></td></tr>
-                <tr id="indexRecomendado">
-                </tr>
-            </table>
+        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black;">
+            <tr>
+                <td class="sliderTitulo"><h2>Series Recomendadas</h2></td>
+                <td class="sliderTitulo" style="text-align: right;">
+                    <button type="button" data-bs-target="#carouselRecomendado" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button type="button" data-bs-target="#carouselRecomendado" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="carouselRecomendado" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexRecomendado1">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexRecomendado2">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexRecomendado3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
         </div>
+
         <div class="slider" id="Favoritos" style="margin-top: 2%; margin-left: 1%;">
             <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
                 <tr><td colspan="7" class="sliderTituloAlt"><h2>Ves Mas Tarde</h2></td></tr>
@@ -193,20 +226,124 @@
                 </tr>
             </table>
         </div>
-        <div class="slider" id="Genero-1" style="margin-top: 2%; margin-left: 1%;">
-            <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
-                <tr><td colspan="7" class="sliderTitulo"><h2>Ciencia Ficcion</h2></td></tr>
-                <tr>
-                    <td style=" align-items: center; padding: 10px;" ><a href="shows.html"><img class="pelicula" src="media/placeHolder.jpg" alt="Solo un cuadro negro"></a></td>
-                    <td style=" align-items: center; padding: 10px;" ><a href="shows.html"><img class="pelicula" src="media/placeHolder.jpg" alt="Solo un cuadro negro"></a></td>
-                    <td style=" align-items: center; padding: 10px;" ><a href="shows.html"><img class="pelicula" src="media/placeHolder.jpg" alt="Solo un cuadro negro"></a></td>
-                    <td style=" align-items: center; padding: 10px;" ><a href="shows.html"><img class="pelicula" src="media/placeHolder.jpg" alt="Solo un cuadro negro"></a></td>
-                    <td style=" align-items: center; padding: 10px;" ><a href="shows.html"><img class="pelicula" src="media/placeHolder.jpg" alt="Solo un cuadro negro"></a></td>
-                    <td style=" align-items: center; padding: 10px;" ><a href="shows.html"><img class="pelicula" src="media/placeHolder.jpg" alt="Solo un cuadro negro"></a></td>
-                    <td style=" align-items: center; padding: 10px;" ><a href="shows.html"><img class="pelicula" src="media/placeHolder.jpg" alt="Solo un cuadro negro"></a></td>
-                </tr>
-            </table>
+
+        <div class="slider" style="margin-top: 2%; margin-left: 1%;">
+        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black;">
+            <tr>
+                <td class="sliderTitulo"><h2>Accion</h2></td>
+                <td class="sliderTitulo" style="text-align: right;">
+                    <button type="button" data-bs-target="#carouselAccion" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button type="button" data-bs-target="#carouselAccion" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="carouselAccion" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexAccion1">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexAccion2">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexAccion3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
         </div>
+
+        <div class="slider" style="margin-top: 2%; margin-left: 1%;">
+        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black;">
+            <tr>
+                <td class="sliderTituloAlt"><h2>Drama</h2></td>
+                <td class="sliderTituloAlt" style="text-align: right;">
+                    <button type="button" data-bs-target="#carouselDrama" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button type="button" data-bs-target="#carouselDrama" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="carouselDrama" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexDrama1">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexDrama2">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexDrama3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        </div>
+
+                <div class="slider" style="margin-top: 2%; margin-left: 1%;">
+        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black;">
+            <tr>
+                <td class="sliderTitulo"><h2>Aventura</h2></td>
+                <td class="sliderTitulo" style="text-align: right;">
+                    <button type="button" data-bs-target="#carouselAventura" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button type="button" data-bs-target="#carouselAventura" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="carouselAventura" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexAventura1">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexAventura2">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div style="align-items: center; padding:10px" class="d-block w-100" id="indexAventura3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        </div>
+
         <div id="footer" style="width: 100%; background-color: black; color: white; margin-top: 1%; padding:10px;">
             <table width="100%">
                 <tr style="height: 10%;">
