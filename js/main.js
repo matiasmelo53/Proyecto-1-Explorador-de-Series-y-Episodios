@@ -4,6 +4,7 @@ Seccion_ver.style.display="none";
 if (sessionStorage.getItem("login")=="True"){
   Seccion_ver.style.display="block";
 }
+
 //genarización de datos de la api
 const getData = () =>
   fetch("https://api.tvmaze.com/shows").then((response) =>
