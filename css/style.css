@@ -16,6 +16,11 @@ button{
     border-color: #FCFAEE;
     box-shadow: 5px 5px #FFFE00;
     height: 39px;
+    .carousel-control{
+        
+        box-shadow: 5px 5px #00B0D4;
+        height: 39px;
+    }
 }
 
 .sliderTitulo{
@@ -66,14 +71,7 @@ a:visited{
     color:#00B0D4
 }
 
-.carousel-control{
-    background-color: black;
-    color: #000000;
-    border: solid;
-    border-color: #FCFAEE;
-    box-shadow: 5px 5px #00B0D4;
-    height: 39px;
-}
+
 
 
 

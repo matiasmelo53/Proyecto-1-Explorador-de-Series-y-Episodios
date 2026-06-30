@@ -1,11 +1,12 @@
 'use strict';
 const URL =localStorage.getItem("ID");
 console.log(URL);
-const getData = () =>
+const getData = (URL) =>
   fetch(URL).then((response) =>
     response.json()
   ).catch((err) => {
     console.log("Error encontrado:", err);
+    window.close;
   });
 
 const list=[];
@@ -39,13 +40,13 @@ const btn_Late=document.querySelector(".mas_tarde");
 btn_Fav.style.display="none";
 btn_Late.style.display="none";
 
-const API = getData();
+const API = getData(URL);
 API.then((result) =>{
     Caratula.innerHTML = `<img src="${result.image.original}" class="caratula" alt="${result.name}"  width="250px;">`; 
     Titulo.innerHTML=`<h1>${result.name}</h1>`;
     Status.innerHTML=`Status: ${result.status}`;
     Estreno.innerHTML=`Se estrenó el ${result.premiered}`;
-    Fin.innerHTML=`Se terminó el ${result.ended}`;
+    if(result.status=="Ended"){Fin.innerHTML=`Se terminó el ${result.ended}`;}
     Lenguaje.innerHTML=`Lenguaje: ${result.language}`;
     let len = Object.keys(result.genres).length;
     for(let i=0; i<len;i++){
@@ -53,7 +54,34 @@ API.then((result) =>{
     }
     Link.innerHTML=`<b>Disponible en:</b> <a style="color: black;" href="${result.officialSite}">${result.network.name}</a>`;
     Descripcion.innerHTML=`<b>Sinopsis:</b> <p><b>${result.name}</b>${result.summary}</p>`;
+    let id_show=result.id;
+    fetch("https://api.tvmaze.com/shows/"+id_show+"/episodes")
+      .then(response => response.json())
+      .then(res => {
+          let episodios = document.getElementById("showEpisodios")
+          res.forEach(episode => {
+              episodios.innerHTML += 
+              `<div class="col">
+                  <div class="card" style="width: 18rem; height:13rem;">
+                      <img class="card-img-top" src="${episode.image.medium}">
+                      <div class="card-body">
+                          <p style="font-size: 0.9rem;" class="card-title">${episode.name}</p>
+                      </div>
+                  </div>
+              </div>`; 
+          });
+          })
+
+      .catch(error =>{
+          console.log(error);
+          let episodios = document.getElementById("showEpisodios")
+          episodios.innerHTML = `Hubo un problema al cargar los episodios de la serie. Error: ${error}`;
+      })
+    console.log(id_show);
 });
+
+
+
 
 if(sessionStorage.getItem("login")=="True"){
   
@@ -85,3 +113,5 @@ btn_Late.addEventListener("click",()=>{
   
   console.log("Lista ver más tarde: ",localStorage.getItem("Later"));
 });
+
+

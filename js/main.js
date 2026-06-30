@@ -4,6 +4,7 @@ Seccion_ver.style.display="none";
 if (sessionStorage.getItem("login")=="True"){
   Seccion_ver.style.display="block";
 }
+
 //genarización de datos de la api
 const getData = () =>
   fetch("https://api.tvmaze.com/shows").then((response) =>
@@ -42,7 +43,7 @@ let add_card= (e,slideID,indexID,pos,id,contador)=>{
   let image = document.getElementById(indexID+id);
   if(image){
     image.innerHTML += `
-    <td style=" align-items: center; padding: 10px;"><a href="shows.html" class='link_img' id="${e._links.self.href}" ><img class="pelicula" src="${e.image.medium}" alt="${e.name}"></a></td>`; 
+    <td style=" align-items: center; padding: 10px;"><a href="shows.html" class='link_img' id="${e._links.self.href}" ><img  class="pelicula" src="${e.image.medium}" alt="${e.name}"></a></td>`; 
   }
   if(contador==6){
     add_slide(slideID,indexID,pos,id);
@@ -123,10 +124,10 @@ API.then((result) => {//Uso de la api
   Imagenes.forEach(Img=>{
     Img.addEventListener("click",()=>{
       localStorage.setItem("ID",Img.id);
-  
     });
   });
 });
+
 let id_7=0;
 let contador_7=0;
 if(JSON.parse(localStorage.getItem("Later"))){
@@ -152,11 +153,10 @@ if(JSON.parse(localStorage.getItem("Later"))){
             contador_7=0;
             id_7++;
           }
-          const Imagenes=document.querySelectorAll(".pelicula");
+          const Imagenes=document.querySelectorAll(".link_img");
           Imagenes.forEach(Img=>{
               Img.addEventListener("click",()=>{
               localStorage.setItem("ID",Img.id);
-              console.log(Img.id);
               });
           });
         }));

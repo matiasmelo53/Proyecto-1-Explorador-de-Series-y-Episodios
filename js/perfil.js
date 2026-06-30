@@ -7,8 +7,8 @@ const Borrar=document.querySelector("#borrar-ses");
 let nom=localStorage.getItem("Nombre");
 let gens=localStorage.getItem("Generos");
 let gens_list="";
-const Fav_Space=document.querySelector("#Fav_space");
-const Later_Space=document.querySelector("#Later_Space");
+const Fav_Space=document.querySelector("#Favoritos");
+const Later_Space=document.querySelector("#Ver_Tarde");
 
 Fav_Space.style.display="none";
 Later_Space.style.display="none";
@@ -59,13 +59,35 @@ Borrar.addEventListener("click",()=>{
 });
 
 
+let add_slide= (slideID,indexID,pos,id)=>{
+  let carrusel=document.querySelectorAll(".carousel-inner");//espacio carrusel
+  let slide=document.querySelector("#"+slideID);//espacio slide
+  
+  let clone = slide.cloneNode(true);//copia
+  clone.classList.remove('active');//cambio de clase
+  clone.setAttribute("id", slideID+id);//cambio de id
+  carrusel[pos].insertAdjacentElement("beforeend",clone);
+  let image = document.querySelectorAll("#"+indexID+"0");
+  image[1].setAttribute("id", indexID+(Math.floor(id)+1));
+  image[1].innerHTML="";
+}
 
-
+let add_card= (e,slideID,indexID,pos,id,contador)=>{
+  let image = document.getElementById(indexID+id);
+  if(image){
+    image.innerHTML += `
+    <td style=" align-items: center; padding: 10px;"><a href="shows.html" class='link_img'><img class="pelicula" id="${e._links.self.href}" src="${e.image.medium}" alt="${e.name}"></a></td>`; 
+  }
+  if(contador==6){
+    add_slide(slideID,indexID,pos,id);
+  }
+}
+let id_1=0;
+let contador_1=0;7
 if(JSON.parse(localStorage.getItem("Fav"))){
     const URL =JSON.parse(localStorage.getItem("Fav"));
     let len=Object.keys(URL).length;
     for(let i=0; i<len;i++){
-        console.log(URL[i]);
         //iniciar api
         const getData = () =>
         fetch(URL[i]).then((response) =>
@@ -74,29 +96,36 @@ if(JSON.parse(localStorage.getItem("Fav"))){
             console.log("Error encontrado:", err);
         });
         const API = getData();
+
+
+
         API.then((res=>{
-            Fav_Space.innerHTML+=`<td style=" align-items: center; "><a href="shows.html"><img class="pelicula" id="${res._links.self.href}" src="${res.image.medium}" alt="${res.name}" width="50%"></a></td>`;
-            
-            const Imagenes=document.querySelectorAll(".pelicula");
-            Imagenes.forEach(Img=>{
-                Img.addEventListener("click",()=>{
+          //e,slideID,indexID,pos,id,contador
+          contador_1++;
+          add_card(res,"Slide-Favoritos","index-Favoritos",0,id_1,contador_1);
+          if(contador_1==6){
+            contador_1=0;
+            id_1++;
+          }
+          const Imagenes=document.querySelectorAll(".pelicula");
+          Imagenes.forEach(Img=>{
+              Img.addEventListener("click",()=>{
                 localStorage.setItem("ID",Img.id);
-                console.log(Img.id);
-                });
-            });
+              });
+          });
         }));
     }
-    
 }else{
     Fav_Space.innerHTML+=`<td style=" align-items: center; "><p>Usa el ♥ para guardar tus shows favoritos</p></td>`;
             
 }
 
+let id_2=0;
+let contador_2=0;7
 if(JSON.parse(localStorage.getItem("Later"))){
     const URL =JSON.parse(localStorage.getItem("Later"));
     let len=Object.keys(URL).length;
     for(let i=0; i<len;i++){
-        console.log(URL[i]);
         //iniciar api
         const getData = () =>
         fetch(URL[i]).then((response) =>
@@ -105,16 +134,21 @@ if(JSON.parse(localStorage.getItem("Later"))){
             console.log("Error encontrado:", err);
         });
         const API = getData();
+
         API.then((res=>{
-            Later_Space.innerHTML+=`<td style=" align-items: center; "><a href="shows.html"><img class="pelicula" id="${res._links.self.href}" src="${res.image.medium}" alt="${res.name}" width="50%"></a></td>`;
-            
-            const Imagenes=document.querySelectorAll(".pelicula");
-            Imagenes.forEach(Img=>{
-                Img.addEventListener("click",()=>{
-                localStorage.setItem("ID",Img.id);
-                console.log(Img.id);
-                });
-            });
+          //e,slideID,indexID,pos,id,contador
+          contador_2++;
+          add_card(res,"Slide-Ver_Tarde","index-Ver_Tarde",1,id_2,contador_2);
+          if(contador_2==6){
+            contador_2=0;
+            id_2++;
+          }
+          const Imagenes=document.querySelectorAll(".pelicula");
+          Imagenes.forEach(Img=>{
+              Img.addEventListener("click",()=>{
+              localStorage.setItem("ID",Img.id);
+              });
+          });
         }));
     }
     
