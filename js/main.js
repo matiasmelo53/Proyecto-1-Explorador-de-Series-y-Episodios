@@ -1,4 +1,3 @@
-
 for (let i = 1; i <= 6; i++) {
     fetch("https://api.tvmaze.com/shows/"+i)
         //.then(res => console.log(result))
@@ -7,7 +6,7 @@ for (let i = 1; i <= 6; i++) {
             let image = document.getElementById("indexRecomendado");
             if(image){
               image.innerHTML += `
-              <td style=" align-items: center; padding: 10px;"><a href="shows.html"><img class="pelicula" src="${res.image.medium}" alt="${res.name}"></a></td>`;
+              <td style=" align-items: center; padding: 10px;"><a href="shows.html"><img class="pelicula" data-id="${res.id}" src="${res.image.medium}" alt="${res.name}"></a></td>`;
         
             }
           })
@@ -17,6 +16,14 @@ for (let i = 1; i <= 6; i++) {
             recomendado.innerHTML += `<td style=" align-items: center; padding: 10px;" ><a href="shows.html">Hubo un problema al cargar la serie.   Index=${i}. Error: ${error}</td>`;
         });
 }
+
+document.addEventListener("click", function(event){
+    if (event.target.classList.contains('pelicula')){
+        let currentShow = event.target.dataset.id;
+        console.log(currentShow);
+        localStorage.setItem("currentShow",currentShow);
+    }
+});
 
 const enviar= document.querySelector("#enviar-sign");
 const log= document.querySelector("#btn_log");
