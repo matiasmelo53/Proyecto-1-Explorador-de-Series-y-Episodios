@@ -189,52 +189,73 @@
                 </tr>
             </table>
 
-            <div id="Favoritos" class="carousel slide" >
-                <div class="carousel-inner">
-                    <div class="carousel-item active" id="Slide-Favoritos">
-                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
-                            <tr><td colspan="7" class="sliderTitulo"><h2 style="text-align: center;" >Tus Favoritos</h2></td></tr>
-                            <tr id="index-Favoritos0">
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#Favoritos" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#Favoritos" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+            <div class="slider" id="Favoritos" style="margin-top: 2%; margin-left: 1%;">
+                <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black;">
+                    <tr>
+                        <td class="sliderTitulo"><h2>Tus Favoritos</h2></td>
+                        <td class="sliderTitulo" style="text-align: right;">
+                            <button type="button" data-bs-target="#carouselFavoritos" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button type="button" data-bs-target="#carouselFavoritos" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div id="carouselFavoritos" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" id="Slide-Favoritos">
+                                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
+                                            <tr id="index-Favoritos0">
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
-            <div id="Ver_Tarde" class="carousel slide">
-                <div class="carousel-inner">
-                    <div class="carousel-item active" id="Slide-Ver_Tarde">
-                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
-                            <tr><td colspan="7" class="sliderTituloAlt"><h2 style="text-align: center;" >Ver Mas Tarde</h2></td></tr>
-                            <tr id="index-Ver_Tarde0">
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#Ver_Tarde" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#Ver_Tarde" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+            <div class="slider" id="Ver_Tarde" style="margin-top: 2%; margin-left: 1%;">
+                <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black;">
+                    <tr>
+                        <td class="sliderTitulo"><h2>Ver Mas Tarde</h2></td>
+                        <td class="sliderTitulo" style="text-align: right;">
+                            <button type="button" data-bs-target="#carouselVer_Tarde" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button type="button" data-bs-target="#carouselVer_Tarde" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div id="carouselVer_Tarde" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" id="Slide-Ver_Tarde">
+                                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
+                                            <tr id="index-Ver_Tarde0">
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
-
 
         </div>
-
-        
-
-
 
         <div id="footer" style="width: 100%; background-color: black; color: white; margin-top: 1%; padding:10px;">
             <table width="100%">
