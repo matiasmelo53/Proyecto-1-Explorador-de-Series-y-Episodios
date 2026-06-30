@@ -1,6 +1,5 @@
 'use strict';
 const URL =localStorage.getItem("ID");
-console.log(URL);
 const getData = (URL) =>
   fetch(URL).then((response) =>
     response.json()
@@ -77,7 +76,6 @@ API.then((result) =>{
           let episodios = document.getElementById("showEpisodios")
           episodios.innerHTML = `Hubo un problema al cargar los episodios de la serie. Error: ${error}`;
       })
-    console.log(id_show);
 });
 
 
@@ -99,7 +97,6 @@ btn_Fav.addEventListener("click",()=>{
   }
   localStorage.setItem("Fav",JSON.stringify(fav_list));
   
-  console.log("Lista favoritos: ",localStorage.getItem("Fav"));
 });
 
 btn_Late.addEventListener("click",()=>{
@@ -111,7 +108,6 @@ btn_Late.addEventListener("click",()=>{
   }
   localStorage.setItem("Later",JSON.stringify(fav_lat));
   
-  console.log("Lista ver más tarde: ",localStorage.getItem("Later"));
 });
 
 
