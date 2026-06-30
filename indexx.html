@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FilmLogs - Shows</title>
+    <title>FilmLogs - Inicio</title>
 
     <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
-    <script src="js/perfil.js"></script>
-    <script src="js/shows.js"></script>
 </head>
+
 <body>
     <div width="100%">
         <nav id="Barra de Navegación" class="navbar navbar-expand-lg bg-body-tertiary"><!--Barra navegación superior, con tablas y pre-css-->
@@ -43,7 +40,7 @@
                     <div class="d-flex">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-underline">
 
-                           <li class="nav-item form-btn">
+                            <li class="nav-item form-btn">
                                 <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#Inscribirse">Inscribirse</button>
                                 <div class="modal fade" id="Inscribirse" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -165,137 +162,175 @@
                                     <img src="media/usuarioPlaceholder.png" style="justify-self: end; margin-left:20px; height: 39px; border-style: solid; border-color: black; box-shadow: 5px 5px #FFFE00;">
                                 </a>
                             </li>
-
                         </ul>
                     </div>
                 </div>
+
             </div>
         </nav>
 
-        <div id="Cuerpo" width="90%" style="padding-left: 0.5%; padding-right: 0.5%; padding-top: 1%;">
-            <!--Pelicula actual, img, texto-->
-            <table id="caja_show" style="padding: 10px; border: solid; border-color: black; box-shadow: 5px 5px black; width: 100%; background-color: #FCFAEE;">
-                <tr>
-                    <td rowspan="8" width="20%" style="text-align: center;">
-                        <div class="img" style="padding-top: 1%;"></div>
-                    </td>
-                    <td width="80%"><div id="showTitulo" style="text-align: left; margin-left: 5%; color: #FFFE00; text-shadow: 2px 2px black;"><h1>Under the Dome</h1></div></td>
-                </tr>
-
-                <tr>
-                    <td><div id="showStatus" style="margin-left: 5%; font-size: 16px; color: black;">Status: Ended</div></td>
-                </tr>
-
-                <tr>
-                    <td><div id="showEstreno" style="margin-left: 5%; font-size: 16px; color: black;">Se estrenó el 2013-06-24</div>
-                    <div id="showFin" style="margin-left: 5%; font-size: 16px; color: black;">Se terminó el 2015-09-10</div></td>
-                </tr>
-
-                 <tr>
-                    <td><div id="showLenguaje" style="margin-left: 5%; font-size: 16px; color: black;">Lenguajes disponibles: English</div></td>
-                </tr>
-
-                <tr>
-                    <td><div id="showGenero" style="margin-left: 5%; font-size: 20px; color: black;"><b>Generos: </b> </div></td>
-                </tr>
-                
-                <tr>
-                    <td><div id="showSitio" style="margin-left: 5%; font-size: 20px; color: black;"><b>Disponible en:</b> <a href="https://www.cbs.com/">CBS</a></div></td>
-                </tr>
-                <tr>
-                    <td><div id="showDesc" style="margin-left: 5%; font-size: 20px; color: black;"><b>Sinopsis:</b> <p><b>Under the Dome</b> is the story of a small town that is suddenly and inexplicably sealed off from the rest of the world by an enormous transparent dome. The town's inhabitants must deal with surviving the post-apocalyptic conditions while searching for answers about the dome, where it came from and if and when it will go away.</p></div></td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="button" class="btn favorito" style="margin-left: 5%; margin-bottom: 1%; font-size: 20px; color: black;">
-                            <svg class="deactivated" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
-                            </svg>
-                            <svg class="activated" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
-                            </svg>
-                        </button>
-                        <button type="button" class="btn mas_tarde" style="margin-left: 5%; margin-bottom: 1%; font-size: 20px; color: black; display: inline;">
-                            <svg class="deactivated" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
-                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
-                            </svg>
-                            <svg class="activated" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
-                                <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
-                            </svg>
-                        </button>
-                    </td>
-                    
-                </tr>
-            </table> 
-                <!--Muestra los ep asociados a la imagen actual.podría ser un slider boostrap, cada recuadro se añade por javascrypt-->
-
-            <div class="slider">
-                <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black; margin-top: 1%; background-color: #FCFAEE">
-                    <tr><td style="background-color: #FFFE00; padding: 10px; padding-left: 20px;"><h3>Episodios</h3></td></tr>
-                    <tr style="text-align: center;">
-                        <td>
-                            <div class="container-fluid text-center">
-                                <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-5" id="showEpisodios"></div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-
+        <div id="Cuerpo" width="90%" style="padding-left: 0.5%; padding-right: 0.5%;">
+            <div id="Recomendado" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="Slide-Recomendado">
+                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
+                            <tr><td colspan="7" class="sliderTitulo"><h2 style="text-align: center;" >Recomendado</h2></td></tr>
+                            <tr id="index-Recomendado0">
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#Recomendado" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#Recomendado" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
 
-
-            <!--Formulario para recibir el comentario-->
-            <div id="comentario">
-                <table width="100%" height="300px" style="border: 2px solid black; box-shadow: 5px 5px black; margin-top: 1%; background-color: #FCFAEE">
-                    <tr style="background-color: #00B0D4;">
-                        <td style="text-align: left; padding: 10px; padding-left: 20px;">
-                            <h3>Comentarios</h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <form action="#" target="_blank" style="padding:2%;">
-                                <table>
-                                    <tr>
-                                        <td rowspan="2">
-                                            <img src="media/usuarioPlaceholder.png" style="height: 39px; border-style: solid; border-color: black; box-shadow: 5px 5px #FFFE00; margin-right: 10px;">
-                                        </td>
-                                        
-                                        <td>
-                                            <div id="usuarioNombre" style="font-size: 20px;">Usuario</div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="width:30%">
-                                            Rating personal:
-                                            <input type="radio" id="rating1" name="rating" value="1" required><label for="rating1">1</label>
-                                            <input type="radio" id="rating2" name="rating" value="2"><label for="rating2">2</label>
-                                            <input type="radio" id="rating3" name="rating" value="3"><label for="rating3">3</label>
-                                            <input type="radio" id="rating4" name="rating" value="4"><label for="rating4">4</label>
-                                            <input type="radio" id="rating5" name="rating" value="5"><label for="rating5">5</label>
-                                        </td>
-                                        
-                                        <td style="width:80%">
-                                            <button type="submit">Enviar</button>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td colspan="3">
-                                            <label for="comentario"></label>
-                                            <textarea style="width: 98%; height: 100px;" name="comentario"></textarea>
-                                        </td>
-                                    </tr>
-                                </table>
-                                
-                            </form>
-                        </td>
-                    </tr>
-                </table>
+            <div id="Ver_Tarde" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="Slide-Ver_Tarde">
+                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
+                            <tr><td colspan="7" class="sliderTituloAlt"><h2 style="text-align: center;" >Ver Mas Tarde</h2></td></tr>
+                            <tr id="index-Ver_Tarde0">
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#Ver_Tarde" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#Ver_Tarde" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
             
+            <div id="Ciencia-Ficcion" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="Slide-CienciaFiccion">
+                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
+                            <tr><td colspan="7" class="sliderTitulo"><h2 style="text-align: center;">Ciencia Ficcion</h2></td></tr>
+                            <tr id="index-CienciaFiccion0">
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#Ciencia-Ficcion" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#Ciencia-Ficcion" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div id="Horror" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="Slide-Horror">
+                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
+                            <tr><td colspan="7" class="sliderTituloAlt"><h2 style="text-align: center;">Horror</h2></td></tr>
+                            <tr id="index-Horror0">
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#Horror" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#Horror" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div id="Romance" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="Slide-Romance">
+                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
+                            <tr><td colspan="7" class="sliderTitulo"><h2 style="text-align: center;">Romance</h2></td></tr>
+                            <tr id="index-Romance0">
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#Romance" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#Romance" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div id="Comedy" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="Slide-Comedy">
+                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
+                            <tr><td colspan="7" class="sliderTituloAlt"><h2 style="text-align: center;">Comedia</h2></td></tr>
+                            <tr id="index-Comedy0">
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#Comedy" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#Comedy" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            
+            <div id="Action" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="Slide-Action">
+                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
+                            <tr><td colspan="7" class="sliderTitulo"><h2 style="text-align: center;">Acción</h2></td></tr>
+                            <tr id="index-Action0">
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#Action" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#Action" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <div id="Otro" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" id="Slide-Otro">
+                        <table style="width: 100%; border: solid; border-color: black; box-shadow: 5px 5px black">
+                            <tr><td colspan="7" class="sliderTitulo"><h2 style="text-align: center;">Más Shows</h2></td></tr>
+                            <tr id="index-Otro0">
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#Otro" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#Otro" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
+
         <div id="footer" style="width: 100%; background-color: black; color: white; margin-top: 1%; padding:10px;">
             <table width="100%">
                 <tr style="height: 10%;">
@@ -305,15 +340,21 @@
                 </tr>
                 <tr style="margin-top: 0%;">
                     <td style="width: 60%;">
-                        <ul style="list-style: none;">
+                        <ul style="padding-left: 50px; font-size: 20px;">
                             <li>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=matiasmelo3600@gmail.com&su=Sobre FilmLogs">
+                            <a class="btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=matiasmelo3600@gmail.com&su=Sobre FilmLogs">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                                </svg>
                                 Matías Melo
                             </a></li><br>
-
                             <li>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ejpc813@gmail.com&su=Sobre FilmLogs">
-                            Nube
+                            
+                            <a class="btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=ejpc813@gmail.com&su=Sobre FilmLogs">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                                </svg>
+                                Nube
                             </a></li>
                         </ul>
                     </td>
@@ -328,6 +369,6 @@
         </div>
     </div>
     <script src="js/nav_bar.js"></script>
-    <script src="js/shows.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
