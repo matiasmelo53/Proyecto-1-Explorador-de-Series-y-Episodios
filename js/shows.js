@@ -59,5 +59,8 @@ fetch("https://api.tvmaze.com/shows/"+localStorage.getItem("currentShow")+"/epis
     .catch(error =>{
         console.log(error);
         let episodios = document.getElementById("showEpisodios")
-        episodios.innerHTML = `Hubo un problema al cargar los episodios de la serie. Error: ${error}`;
+        episodios.innerHTML = 
+        `<div class="col">
+            Hubo un problema al cargar los episodios de la serie. Error: ${error}
+        </div>`;
     })
