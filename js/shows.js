@@ -15,6 +15,9 @@ if(!localStorage.getItem("Fav")){
 if(!localStorage.getItem("Later")){
   localStorage.setItem("Later",JSON.stringify(list));
 }
+if(!localStorage.getItem("Visto")){
+  localStorage.setItem("Visto",JSON.stringify(list));
+}
 
 const Caratula=document.querySelector(".img");
 const Titulo=document.querySelector(".showTitulo");
@@ -35,6 +38,7 @@ icon2.forEach(a=>{
 
 const btn_Fav=document.querySelector(".favorito");
 const btn_Late=document.querySelector(".mas_tarde");
+const btn_visto=document.querySelector(".visto");
 
 btn_Fav.style.display="none";
 btn_Late.style.display="none";
@@ -57,17 +61,30 @@ API.then((result) =>{
     fetch("https://api.tvmaze.com/shows/"+id_show+"/episodes")
       .then(response => response.json())
       .then(res => {
-          let episodios = document.getElementById("showEpisodios")
+          let episodios = document.getElementById("showEpisodios");
           res.forEach(episode => {
+            if(episode.image){
               episodios.innerHTML += 
               `<div class="col">
                   <div class="card" style="width: 18rem; height:13rem;">
-                      <img class="card-img-top" src="${episode.image.medium}">
+                      <img class="card-img-top" src="${episode.image.original}" width="250px" height="150px">
                       <div class="card-body">
                           <p style="font-size: 0.9rem;" class="card-title">${episode.name}</p>
                       </div>
                   </div>
-              </div>`; 
+              </div>`;
+            }else{
+              episodios.innerHTML += 
+              `<div class="col">
+                  <div class="card" style="width: 18rem; height:13rem;">
+                      <h3>Imagen no disponible<h3>
+                      <div class="card-body">
+                          <p style="font-size: 0.9rem;" class="card-title">${episode.name}</p>
+                      </div>
+                  </div>
+              </div>`;
+
+            }
           });
           })
 
@@ -89,25 +106,69 @@ if(sessionStorage.getItem("login")=="True"){
 }
 
 btn_Fav.addEventListener("click",()=>{
-  icon2[0].style.display="block";
-  icon[0].style.display="none";
-  let fav_list=JSON.parse(localStorage.getItem("Fav"));
-  if(!fav_list.includes(URL)){
-    fav_list.push(URL);
+  if(btn_Fav.checked==true ){
+    icon2[0].style.display="inline";
+    icon[0].style.display="none";
+    let fav_list=JSON.parse(localStorage.getItem("Fav"));
+    if(!fav_list.includes(URL)){
+      fav_list.push(URL);
+    }
+    localStorage.setItem("Fav",JSON.stringify(fav_list));
+  }else{
+    icon2[0].style.display="none";
+    icon[0].style.display="inline";
+    let fav_list=JSON.parse(localStorage.getItem("Fav"));
+    if(fav_list.includes(URL)){
+      let index=fav_list.indexOf(URL);
+      fav_list.splice(index,1);
+    }
+    localStorage.setItem("Fav",JSON.stringify(fav_list));
   }
-  localStorage.setItem("Fav",JSON.stringify(fav_list));
-  
 });
 
 btn_Late.addEventListener("click",()=>{
-  icon2[1].style.display="block";
-  icon[1].style.display="none";
-  let fav_lat=JSON.parse(localStorage.getItem("Later"));
-  if(!fav_lat.includes(URL)){
-    fav_lat.push(URL);
+  if(btn_Late.checked==true){
+    icon2[1].style.display="inline";
+    icon[1].style.display="none";
+    let fav_lat=JSON.parse(localStorage.getItem("Later"));
+    if(!fav_lat.includes(URL)){
+      fav_lat.push(URL);
+    }
+    localStorage.setItem("Later",JSON.stringify(fav_lat));
+  }else{
+    icon2[1].style.display="none";
+    icon[1].style.display="inline";
+    let fav_lat=JSON.parse(localStorage.getItem("Later"));
+    if(fav_lat.includes(URL)){
+      let index=fav_lat.indexOf(URL);
+      fav_lat.splice(index,1);
+    }
+    
+    localStorage.setItem("Later",JSON.stringify(fav_lat));
   }
-  localStorage.setItem("Later",JSON.stringify(fav_lat));
-  
+});
+
+btn_visto.addEventListener("click",()=>{
+  if(btn_visto.checked==true){
+    icon2[2].style.display="inline";
+    icon[2].style.display="none";
+    let visto_list=JSON.parse(localStorage.getItem("Visto"));
+    if(!visto_list.includes(URL)){
+      visto_list.push(URL);
+    }
+    localStorage.setItem("Visto",JSON.stringify(visto_list));
+  }else{
+    icon2[2].style.display="none";
+    icon[2].style.display="inline";
+    let visto_list=JSON.parse(localStorage.getItem("Visto"));
+    if(visto_list.includes(URL)){
+      let index=visto_list.indexOf(URL);
+      visto_list.splice(index,1);
+    }
+    
+    localStorage.setItem("Visto",JSON.stringify(visto_list));
+  }
+  console.log(localStorage.getItem("Visto"));
 });
 
 
