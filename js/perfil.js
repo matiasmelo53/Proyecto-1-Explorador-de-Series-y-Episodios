@@ -9,11 +9,13 @@ let gens=localStorage.getItem("Generos");
 let gens_list="";
 const Fav_Space=document.querySelector("#Favoritos");
 const Later_Space=document.querySelector("#Ver_Tarde");
+const Stats=document.querySelector("#stats");
 
 Fav_Space.style.display="none";
 Later_Space.style.display="none";
 Sesion.style.display="none";
 Borrar.style.display="none";
+Stats.style.display="none";
 
 //console.log("data: "+nom,localStorage.getItem("Contraseña")); 
 
@@ -27,6 +29,7 @@ if (sessionStorage.getItem("login")=="True"){
     Borrar.style.display="block";
     Fav_Space.style.display="block";
     Later_Space.style.display="block";
+    Stats.style.display="block";
 
     //mostrar datos recolectados.
     Space_nom.innerHTML=nom;
@@ -157,58 +160,65 @@ if(JSON.parse(localStorage.getItem("Later"))){
 }
 
 const lista=JSON.parse(localStorage.getItem("Visto"));
+console.log("lista fav",JSON.parse(localStorage.getItem("Fav")));
+const lista2=JSON.parse(localStorage.getItem("Fav"));
 
 
 let sciFi=0,Horror=0, Romance=0, Comedia=0, Accion=0,Otros=0;
 
 const yValues = [0, 0, 0, 0, 0, 0];
-console.log(lista);
-let len=Object.keys(lista).length;
-const barColors = ["MediumSlateBlue", "blueviolet","violet","blue","Indigo","green"];
+const valores_Fav = [0, 0, 0, 0, 0, 0];
+
+const barColors = ["MediumSlateBlue", "blueviolet","violet","blue","Indigo","PaleTurquoise"];
 const xValues = ["Ciencia Ficción", "Horror", "Romance", "Comedia", "Acción","Otros"];
 const ctx = document.getElementById('Chart_Vistos');
+const char2=document.querySelector("#Chart_Fav");
 
-async function getData(url){
-    try{            
+async function getData(url,Y){
+    try{ 
+        console.log("url",url);
         const res= await fetch(url);
         const esp= await res.json();
-        await ASS(esp);
-    }catch(error){
-        console.error("Error: "+error);
+        await ASS(esp,Y);
+    }catch(er){
+        console.log("ERROR");
+        console.error("Error: "+er);
     }
 }
-async function ASS(res) {
+async function ASS(res,Y) {
     let lar = Object.keys(res.genres).length;
     if(res.genres.includes("Science-Fiction")){
-        yValues[0]++;
+        Y[0]++;
     }
      if (res.genres.includes("Horror")){
-        yValues[1]++;
+        Y[1]++;
     }
      if(res.genres.includes("Romance")){
-        yValues[2]++;
+        Y[2]++;
     }
      if(res.genres.includes("Comedy")){
-        yValues[3]++;
+        Y[3]++;
     }
      if(res.genres.includes("Action")){
-        yValues[4]++;
+        Y[4]++;
     }
     if(res.genres.includes("Action")==false && res.genres.includes("Comedy")==false && res.genres.includes("Romance")==false && res.genres.includes("Horror")==false && res.genres.includes("Science-Fiction")==false){
-        yValues[5]++;
+        Y[5]++;
     }
     //if(res.genres.includes("Action")==false && res.genres.includes("Comedy")==false && res.genres.includes("Romance")==false && res.genres.includes("Horror")==false && res.genres.includes("Science-Fiction")==false);
  
 };
 
-async function contadores(list,callback){
+async function contadores(list,Y,callback){
+    let len=Object.keys(list).length;
     for (let i=0;i<len;i++){
-        await getData(list[i]);
+        await getData(list[i],Y);
     }
     callback();
 }
 
-contadores(lista,grafico_visto);
+contadores(lista,yValues, grafico_visto);
+contadores(lista2,valores_Fav,grafico_fav);
 
 function grafico_visto(){
     new Chart(ctx, {
@@ -231,5 +241,29 @@ function grafico_visto(){
         }
         }
     }
+    });
+}
+
+function grafico_fav(){
+     new Chart(char2, {
+        type: 'doughnut',
+        data:{
+            labels:xValues,
+            datasets: [{
+                data: valores_Fav,
+                backgroundColor: barColors,
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            plugins: {
+            legend: {display: false},
+            title: {
+                display: true,
+                text: "Tus géneros favoritos",
+                font: {size: 20}
+            }
+            }
+        }
     });
 }
