@@ -8,6 +8,8 @@ const getData = (URL) =>
     window.close;
   });
 
+let showID = localStorage.getItem("IDnumber");
+
 const list=[];
 if(!localStorage.getItem("Fav")){
   localStorage.setItem("Fav",JSON.stringify(list));
@@ -96,8 +98,6 @@ API.then((result) =>{
 });
 
 
-
-
 if(sessionStorage.getItem("login")=="True"){
   
   btn_Late.style.display="inline";
@@ -171,4 +171,126 @@ btn_visto.addEventListener("click",()=>{
   console.log(localStorage.getItem("Visto"));
 });
 
+class Comentario {
+    constructor(rating,comentario,id){
+        this.rating = rating;
+        this.comentario = comentario;
+        this.id = id;
+    }
+}
 
+// Add an item to a list in localStorage
+function addToList(key, value) {
+// Get existing list or create a new one
+let list = JSON.parse(localStorage.getItem(key)) || [];
+
+// Add the new value
+list.push(value);
+
+// Save back to localStorage
+localStorage.setItem(key, JSON.stringify(list));
+}
+
+// Retrieve the list
+function getList(key) {
+return JSON.parse(localStorage.getItem(key)) || [];
+}
+
+let allComments = getList("AllComentarios");
+
+allComments.forEach(comment => {
+    if (comment.id == showID){
+      let current = document.getElementById("commentSection").innerHTML;
+      let newComment = 
+      `<table>
+          <tr>
+              <td rowspan="2">
+                  <img src="media/usuarioPlaceholder.png" style="height: 39px; border-style: solid; border-color: black; box-shadow: 5px 5px #FFFE00; margin-right: 10px;">
+              </td>
+              
+              <td>
+                  <div id="usuarioNombre" style="font-size: 20px;">Usuario</div>
+              </td>
+          </tr>
+
+          <tr>
+              <td style="width:32%">
+                  Rating: ${comment.rating}
+              </td>
+
+              <td style="width:80%">
+              </td>
+
+          </tr>
+
+          <tr>
+              <td colspan="3">
+                  ${comment.comentario}
+              </td>
+          </tr>
+      <table><br>
+              `;
+
+      let newSection = newComment + current
+      document.getElementById("commentSection").innerHTML = newSection;
+
+    }
+    
+    
+});
+
+let resena = document.querySelector("#submitComentario");
+
+
+
+resena.addEventListener("submit", (event) => {
+    event.preventDefault(); // Magic line! Stops the reload.
+
+    // Get the input value
+    const rating = event.target.querySelector("input[name=rating]:checked").value;
+    console.log(rating);
+    const comentario = event.target.querySelector("textarea").value;
+    let comment = `<p>${comentario}</p>`
+    let fullResena = new Comentario(rating,comment,showID);
+
+    // Example usage
+    addToList("AllComentarios", fullResena);
+
+    // Display it on the page (no reload needed!)
+    let newComentario = `<table>
+        <tr>
+            <td rowspan="2">
+                <img src="media/usuarioPlaceholder.png" style="height: 39px; border-style: solid; border-color: black; box-shadow: 5px 5px #FFFE00; margin-right: 10px;">
+            </td>
+            
+            <td>
+                <div id="usuarioNombre" style="font-size: 20px;">Usuario</div>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="width:32%">
+                Rating: ${rating}
+            </td>
+
+            <td style="width:80%">
+            </td>
+
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                ${comment}
+            </td>
+        </tr>
+    <table><br>
+            `;
+
+    let currentComments = document.getElementById("commentSection").innerHTML;
+    let newSeccion = newComentario + currentComments;
+
+    document.getElementById("commentSection").innerHTML = newSeccion;
+    
+
+    console.log("Form submitted without reloading!");
+    });
