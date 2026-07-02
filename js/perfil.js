@@ -153,6 +153,83 @@ if(JSON.parse(localStorage.getItem("Later"))){
     }
     
 }else{
-    Later_Space.innerHTML+=`<td style=" align-items: center; "><p>Usa el 𖤘 para guardar tus shows favoritos</p></td>`;
-            
+    Later_Space.innerHTML+=`<td style=" align-items: center; "><p>Usa el 𖤘 para guardar tus shows favoritos</p></td>`;           
+}
+
+const lista=JSON.parse(localStorage.getItem("Visto"));
+
+
+let sciFi=0,Horror=0, Romance=0, Comedia=0, Accion=0,Otros=0;
+
+const yValues = [0, 0, 0, 0, 0, 0];
+console.log(lista);
+let len=Object.keys(lista).length;
+const barColors = ["MediumSlateBlue", "blueviolet","violet","blue","Indigo","green"];
+const xValues = ["Ciencia Ficción", "Horror", "Romance", "Comedia", "Acción","Otros"];
+const ctx = document.getElementById('Chart_Vistos');
+
+async function getData(url){
+    try{            
+        const res= await fetch(url);
+        const esp= await res.json();
+        await ASS(esp);
+    }catch(error){
+        console.error("Error: "+error);
+    }
+}
+async function ASS(res) {
+    let lar = Object.keys(res.genres).length;
+    if(res.genres.includes("Science-Fiction")){
+        yValues[0]++;
+    }
+     if (res.genres.includes("Horror")){
+        yValues[1]++;
+    }
+     if(res.genres.includes("Romance")){
+        yValues[2]++;
+    }
+     if(res.genres.includes("Comedy")){
+        yValues[3]++;
+    }
+     if(res.genres.includes("Action")){
+        yValues[4]++;
+    }
+    if(res.genres.includes("Action")==false && res.genres.includes("Comedy")==false && res.genres.includes("Romance")==false && res.genres.includes("Horror")==false && res.genres.includes("Science-Fiction")==false){
+        yValues[5]++;
+    }
+    //if(res.genres.includes("Action")==false && res.genres.includes("Comedy")==false && res.genres.includes("Romance")==false && res.genres.includes("Horror")==false && res.genres.includes("Science-Fiction")==false);
+ 
+};
+
+async function contadores(list,callback){
+    for (let i=0;i<len;i++){
+        await getData(list[i]);
+    }
+    callback();
+}
+
+contadores(lista,grafico_visto);
+
+function grafico_visto(){
+    new Chart(ctx, {
+    type: "bar",
+    data: {
+        labels: xValues,
+        datasets: [{
+        data: yValues,
+        backgroundColor: barColors
+        
+        }]
+    },
+    options: {
+        plugins: {
+        legend: {display: false},
+        title: {
+            display: true,
+            text: "Los Géneros que Has Visto",
+            font: {size: 20}
+        }
+        }
+    }
+    });
 }
