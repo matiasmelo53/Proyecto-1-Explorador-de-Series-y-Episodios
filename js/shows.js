@@ -9,6 +9,16 @@ const getData = (URL) =>
   });
 
 let showID = localStorage.getItem("IDnumber");
+let nombreUsuario = document.getElementById("usuarioNombre");
+nombreUsuario.innerHTML = localStorage.getItem("Nombre");
+
+let formSubmit = document.getElementById("submitComentario");
+
+formSubmit.style.display = "none";
+
+if (sessionStorage.getItem("login")=="True"){
+  formSubmit.style.display = "block";
+}
 
 const list=[];
 if(!localStorage.getItem("Fav")){
@@ -172,10 +182,11 @@ btn_visto.addEventListener("click",()=>{
 });
 
 class Comentario {
-    constructor(rating,comentario,id){
+    constructor(rating,comentario,id,nombre){
         this.rating = rating;
         this.comentario = comentario;
         this.id = id;
+        this.nombre = nombre;
     }
 }
 
@@ -209,7 +220,7 @@ allComments.forEach(comment => {
               </td>
               
               <td>
-                  <div id="usuarioNombre" style="font-size: 20px;">Usuario</div>
+                  <div id="usuarioNombre" style="font-size: 20px;">${comment.nombre}</div>
               </td>
           </tr>
 
@@ -251,7 +262,7 @@ resena.addEventListener("submit", (event) => {
     console.log(rating);
     const comentario = event.target.querySelector("textarea").value;
     let comment = `<p>${comentario}</p>`
-    let fullResena = new Comentario(rating,comment,showID);
+    let fullResena = new Comentario(rating,comment,showID,localStorage.getItem("Nombre"));
 
     // Example usage
     addToList("AllComentarios", fullResena);
@@ -264,7 +275,7 @@ resena.addEventListener("submit", (event) => {
             </td>
             
             <td>
-                <div id="usuarioNombre" style="font-size: 20px;">Usuario</div>
+                <div id="usuarioNombre" style="font-size: 20px;">${localStorage.getItem("Nombre")}</div>
             </td>
         </tr>
 
