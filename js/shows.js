@@ -79,7 +79,8 @@ API.then((result) =>{
               episodios.innerHTML += 
               `<div class="col">
                   <div class="card" style="width: 18rem; height:13rem;">
-                      <h3>Imagen no disponible<h3>
+                      <img class="card-img-top" src="media/PlaceHolder_Episodios.png" width="250px" height="150px" alt="Imagen no disponible, Lo sentimos">
+                      
                       <div class="card-body">
                           <p style="font-size: 0.9rem;" class="card-title">${episode.name}</p>
                       </div>
