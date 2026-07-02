@@ -269,7 +269,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <form action="#" target="_blank" style="padding:2%;">
+                            <form id="submitComentario" action="#" target="_blank" style="padding:2%;">
                                 <table>
                                     <tr>
                                         <td rowspan="2">
@@ -283,12 +283,13 @@
 
                                     <tr>
                                         <td style="width:30%">
-                                            Rating personal:
-                                            <input type="radio" id="rating1" name="rating" value="1" required><label for="rating1">1</label>
-                                            <input type="radio" id="rating2" name="rating" value="2"><label for="rating2">2</label>
-                                            <input type="radio" id="rating3" name="rating" value="3"><label for="rating3">3</label>
-                                            <input type="radio" id="rating4" name="rating" value="4"><label for="rating4">4</label>
-                                            <input type="radio" id="rating5" name="rating" value="5"><label for="rating5">5</label>
+                                            <div class="rating">
+                                                <input type="radio" id="rating1" name="rating" value="5" required><label for="rating1">☆</label>
+                                                <input type="radio" id="rating2" name="rating" value="4"><label for="rating2">☆</label>
+                                                <input type="radio" id="rating3" name="rating" value="3"><label for="rating3">☆</label>
+                                                <input type="radio" id="rating4" name="rating" value="2"><label for="rating4">☆</label>
+                                                <input type="radio" id="rating5" name="rating" value="1"><label for="rating5">☆</label>
+                                            </div>
                                         </td>
                                         
                                         <td style="width:80%">
@@ -309,6 +310,8 @@
                     </tr>
                 </table>
             </div>
+
+            <div id="commentSection" style="border-style: solid; padding: 10px;"></div>
             
         </div>
         <div id="footer" style="width: 100%; background-color: black; color: white; margin-top: 1%; padding:10px;">

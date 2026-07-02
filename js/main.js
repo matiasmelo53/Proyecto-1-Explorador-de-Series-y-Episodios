@@ -42,7 +42,7 @@ let add_card= (e,slideID,indexID,pos,id,contador)=>{
   let image = document.getElementById(indexID+id);
   if(image){
     image.innerHTML += `
-    <td style=" align-items: center; padding: 10px;"><a href="shows.html" class='link_img' id="${e._links.self.href}" ><img class="pelicula" src="${e.image.medium}" alt="${e.name}"></a></td>`; 
+    <td style=" align-items: center; padding: 10px;"><a href="shows.html" class='link_img' id="${e._links.self.href}" data-value = "${e.id}"><img class="pelicula" src="${e.image.medium}" alt="${e.name}"></a></td>`; 
   }
   if(contador==6){
     add_slide(slideID,indexID,pos,id);
@@ -123,6 +123,7 @@ API.then((result) => {//Uso de la api
   Imagenes.forEach(Img=>{
     Img.addEventListener("click",()=>{
       localStorage.setItem("ID",Img.id);
+      localStorage.setItem("IDnumber",Img.dataset.value);
   
     });
   });
@@ -154,6 +155,7 @@ if(JSON.parse(localStorage.getItem("Later"))){
           Imagenes.forEach(Img=>{
             Img.addEventListener("click",()=>{
               localStorage.setItem("ID",Img.id);
+              localStorage.setItem("IDnumber",Img.dataset.value);
           
             });
           });
